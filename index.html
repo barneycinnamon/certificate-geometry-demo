@@ -1038,51 +1038,48 @@ html&gt;body{padding:0}&lt;/style&gt;
 &lt;div id=&quot;certificate-geometry-intuition&quot;&gt;
   &lt;h2&gt;From physical contacts to a certificate tangent&lt;/h2&gt;
   &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Polygon and orientation controls&quot;&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;cgi-inner&quot;&gt;Inner sides
-      &lt;input class=&quot;form-control&quot; id=&quot;cgi-inner&quot; type=&quot;number&quot; min=&quot;3&quot; max=&quot;20&quot; step=&quot;1&quot; value=&quot;5&quot;&gt;
+    &lt;label class=&quot;form-label cgi-side-control&quot; for=&quot;cgi-inner&quot;&gt;Inner sides
+      &lt;input class=&quot;form-control&quot; id=&quot;cgi-inner&quot; type=&quot;number&quot; min=&quot;3&quot; max=&quot;20&quot; step=&quot;1&quot; value=&quot;4&quot;&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-label&quot; for=&quot;cgi-outer&quot;&gt;Outer sides
+    &lt;label class=&quot;form-label cgi-side-control&quot; for=&quot;cgi-outer&quot;&gt;Outer sides
       &lt;input class=&quot;form-control&quot; id=&quot;cgi-outer&quot; type=&quot;number&quot; min=&quot;3&quot; max=&quot;20&quot; step=&quot;1&quot; value=&quot;8&quot;&gt;
     &lt;/label&gt;
-    &lt;label class=&quot;form-label cgi-angle-control&quot; for=&quot;cgi-angle&quot;&gt;Orientation &lt;span id=&quot;cgi-angle-value&quot; class=&quot;tabular-nums&quot;&gt;0.00°&lt;/span&gt;
+    &lt;label class=&quot;form-label cgi-angle-control&quot; for=&quot;cgi-angle&quot;&gt;Inner symmetry-ray angle φ &lt;span id=&quot;cgi-angle-value&quot; class=&quot;tabular-nums&quot;&gt;0.00°&lt;/span&gt; &lt;span id=&quot;cgi-orientation-state&quot; class=&quot;cgi-state-badge&quot;&gt;global optimum&lt;/span&gt;
       &lt;input class=&quot;form-range&quot; id=&quot;cgi-angle&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;360&quot; step=&quot;any&quot; value=&quot;0&quot;&gt;
     &lt;/label&gt;
-    &lt;button class=&quot;btn&quot; id=&quot;cgi-optimum&quot; type=&quot;button&quot;&gt;Show global optimum&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; id=&quot;cgi-optimum&quot; type=&quot;button&quot;&gt;Show symmetric global optimum&lt;/button&gt;
   &lt;/div&gt;
 
   &lt;div class=&quot;cgi-panels&quot;&gt;
     &lt;section aria-labelledby=&quot;cgi-physical-title&quot;&gt;
-      &lt;h3 id=&quot;cgi-physical-title&quot;&gt;1 · Contact cage&lt;/h3&gt;
-      &lt;div class=&quot;text-small text-muted&quot;&gt;The numbered outer sides block further growth.&lt;/div&gt;
+      &lt;h3 id=&quot;cgi-physical-title&quot;&gt;1 · Fit and shared symmetry&lt;/h3&gt;
+      &lt;div class=&quot;cgi-panel-caption text-small text-muted&quot;&gt;Canonical optimum: x for vertex-axis symmetry (0°/180°), y for edge-midpoint symmetry (90°/270°). Purple ray = φ; accented outer sides are tight.&lt;/div&gt;
+      &lt;div id=&quot;cgi-contact-summary&quot; class=&quot;cgi-panel-summary text-small&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
       &lt;svg id=&quot;cgi-physical&quot; role=&quot;img&quot; aria-label=&quot;Contained polygon with numbered physical contacts and outer normals&quot;&gt;&lt;/svg&gt;
+      &lt;div id=&quot;cgi-symmetry-status&quot; class=&quot;cgi-symmetry-status text-small&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
     &lt;/section&gt;
 
     &lt;section aria-labelledby=&quot;cgi-bridge-title&quot;&gt;
-      &lt;h3 id=&quot;cgi-bridge-title&quot;&gt;2 · Build every exposed generator&lt;/h3&gt;
-      &lt;div class=&quot;text-small text-muted&quot;&gt;Each row is one tied cage: its normals close, while its support vectors end at g.&lt;/div&gt;
+      &lt;h3 id=&quot;cgi-bridge-title&quot;&gt;2 · Balanced cages → support sums&lt;/h3&gt;
+      &lt;div class=&quot;cgi-panel-caption text-small text-muted&quot;&gt;Weighted side normals form a closed head-to-tail loop: Σλᵢnᵢ = 0, so translation cancels. The same weights build gᵢ; its purple projection is d(φ).&lt;/div&gt;
+      &lt;div id=&quot;cgi-generator-summary&quot; class=&quot;cgi-panel-summary text-small&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
       &lt;svg id=&quot;cgi-bridge&quot; role=&quot;img&quot; aria-label=&quot;All exposed balanced cages and their certificate-vector sums&quot;&gt;&lt;/svg&gt;
+      &lt;div class=&quot;cgi-derivation text-small&quot; aria-label=&quot;Why the reciprocal scale formula holds&quot;&gt;
+        &lt;span&gt;&lt;strong&gt;Σλᵢnᵢ = 0&lt;/strong&gt;&lt;small&gt;cancel translation&lt;/small&gt;&lt;/span&gt;
+        &lt;b&gt;+&lt;/b&gt;
+        &lt;span&gt;&lt;strong&gt;aΣλᵢ = 1&lt;/strong&gt;&lt;small&gt;fix units&lt;/small&gt;&lt;/span&gt;
+        &lt;b&gt;⇒&lt;/b&gt;
+        &lt;span&gt;&lt;strong&gt;μ(φ)d(φ) ≤ 1&lt;/strong&gt;&lt;small&gt;equality at the tight fit&lt;/small&gt;&lt;/span&gt;
+      &lt;/div&gt;
     &lt;/section&gt;
 
     &lt;section aria-labelledby=&quot;cgi-certificate-title&quot;&gt;
-      &lt;h3 id=&quot;cgi-certificate-title&quot;&gt;3 · Read the scale&lt;/h3&gt;
-      &lt;div class=&quot;text-small text-muted&quot;&gt;The tangent distance is the reciprocal scale.&lt;/div&gt;
+      &lt;h3 id=&quot;cgi-certificate-title&quot;&gt;3 · Current support → scale&lt;/h3&gt;
+      &lt;div class=&quot;cgi-panel-caption text-small text-muted&quot;&gt;Purple is the current support line and distance d(φ). Orange is the global radius d* and every closest certificate edge.&lt;/div&gt;
+      &lt;div id=&quot;cgi-certificate-summary&quot; class=&quot;cgi-panel-summary text-small tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
       &lt;svg id=&quot;cgi-certificate&quot; role=&quot;img&quot; aria-label=&quot;Certificate polygon with tangent line, exposed point, and closest edges&quot;&gt;&lt;/svg&gt;
     &lt;/section&gt;
   &lt;/div&gt;
-
-  &lt;div class=&quot;cgi-equation&quot; aria-live=&quot;polite&quot;&gt;
-    &lt;span&gt;tangent distance&lt;/span&gt;
-    &lt;strong id=&quot;cgi-distance&quot; class=&quot;tabular-nums&quot;&gt;d = 0&lt;/strong&gt;
-    &lt;span&gt;therefore&lt;/span&gt;
-    &lt;strong id=&quot;cgi-scale&quot; class=&quot;tabular-nums&quot;&gt;μ = 1/d&lt;/strong&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;cgi-legend text-small&quot; aria-hidden=&quot;true&quot;&gt;
-    &lt;span&gt;&lt;i class=&quot;cgi-key cgi-key-1&quot;&gt;&lt;/i&gt;contact 1&lt;/span&gt;
-    &lt;span&gt;&lt;i class=&quot;cgi-key cgi-key-2&quot;&gt;&lt;/i&gt;contact 2&lt;/span&gt;
-    &lt;span&gt;&lt;i class=&quot;cgi-key cgi-key-3&quot;&gt;&lt;/i&gt;contact 3&lt;/span&gt;
-    &lt;span&gt;&lt;i class=&quot;cgi-key cgi-key-global&quot;&gt;&lt;/i&gt;closest certificate edge&lt;/span&gt;
-  &lt;/div&gt;
-  &lt;div id=&quot;cgi-status&quot; class=&quot;text-small text-muted&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
@@ -1091,48 +1088,89 @@ html&gt;body{padding:0}&lt;/style&gt;
   #certificate-geometry-intuition h3 { margin: 0 0 0.2rem; font-weight: 500; }
   #certificate-geometry-intuition .viz-controls { align-items: end; margin-bottom: 0.8rem; }
   #certificate-geometry-intuition .form-label { min-width: 100px; }
-  #certificate-geometry-intuition .cgi-angle-control { flex: 1 1 250px; }
+  #certificate-geometry-intuition .cgi-side-control { flex: 0 1 132px; min-width: 116px; }
+  #certificate-geometry-intuition .cgi-angle-control { flex: 1 1 280px; }
+  #certificate-geometry-intuition .cgi-state-badge { display: inline-flex; margin-left: 0.35rem; padding: 0.08rem 0.4rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted-foreground); font-size: 0.72rem; font-weight: 500; vertical-align: 0.08rem; }
+  #certificate-geometry-intuition .cgi-state-badge[data-global=&quot;true&quot;] { border-color: var(--orange); color: var(--orange); background: color-mix(in srgb, var(--orange) 8%, transparent); }
+  #certificate-geometry-intuition .cgi-state-badge[data-near=&quot;true&quot;] { border-color: var(--yellow); color: var(--yellow); background: color-mix(in srgb, var(--yellow) 8%, transparent); }
   #certificate-geometry-intuition .cgi-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   #certificate-geometry-intuition section { min-width: 0; }
+  #certificate-geometry-intuition .cgi-panel-caption { min-height: 4.2em; }
+  #certificate-geometry-intuition .cgi-panel-summary { min-height: 1.5em; margin: 0.3rem 0 0.15rem; color: var(--foreground); font-weight: 500; }
   #certificate-geometry-intuition svg { width: 100%; display: block; }
   #certificate-geometry-intuition #cgi-physical,
   #certificate-geometry-intuition #cgi-certificate { aspect-ratio: 1; }
   #certificate-geometry-intuition #cgi-bridge { min-height: 260px; }
   #certificate-geometry-intuition .cgi-frame { fill: none; stroke: var(--border); stroke-width: 1; }
-  #certificate-geometry-intuition .cgi-outer { fill: color-mix(in srgb, var(--viz-series-1) 6%, transparent); stroke: var(--foreground); stroke-width: 1.75; }
-  #certificate-geometry-intuition .cgi-inner { fill: color-mix(in srgb, var(--viz-series-5) 9%, transparent); stroke: var(--viz-series-5); stroke-width: 1.75; }
+  #certificate-geometry-intuition .cgi-outer { fill: color-mix(in srgb, var(--viz-series-1) 5%, transparent); stroke: var(--muted-foreground); stroke-width: 1.75; stroke-opacity: 0.56; }
+  #certificate-geometry-intuition .cgi-inner { fill: color-mix(in srgb, var(--viz-series-5) 9%, transparent); stroke: var(--viz-series-5); stroke-width: 2.25; }
   #certificate-geometry-intuition .cgi-cert { fill: color-mix(in srgb, var(--viz-series-1) 9%, transparent); stroke: var(--foreground); stroke-width: 1.75; }
   #certificate-geometry-intuition .cgi-cert-point { fill: var(--muted-foreground); }
   #certificate-geometry-intuition .cgi-origin { fill: var(--foreground); }
   #certificate-geometry-intuition .cgi-guide { stroke: var(--border); stroke-width: 1; }
   #certificate-geometry-intuition .cgi-tangent { stroke: var(--viz-series-5); stroke-width: 1.75; stroke-dasharray: 5 4; }
   #certificate-geometry-intuition .cgi-distance-line { stroke: var(--viz-series-5); stroke-width: 2; }
+  #certificate-geometry-intuition .cgi-projection { stroke: var(--viz-series-5); stroke-width: 3.5; stroke-linecap: round; }
+  #certificate-geometry-intuition .cgi-projection-guide { stroke: var(--viz-series-5); stroke-width: 1; stroke-dasharray: 3 4; opacity: 0.55; }
+  #certificate-geometry-intuition .cgi-orientation-axis { stroke: var(--muted-foreground); stroke-width: 1; opacity: 0.42; }
   #certificate-geometry-intuition .cgi-current-point { fill: var(--viz-series-5); stroke: var(--background); stroke-width: 1.5; }
   #certificate-geometry-intuition .cgi-exposed { stroke: var(--viz-series-5); stroke-width: 4; stroke-linecap: round; }
-  #certificate-geometry-intuition .cgi-closest { stroke: var(--orange); stroke-width: 7; stroke-linecap: round; }
-  #certificate-geometry-intuition .cgi-series-1 { color: var(--viz-series-2); stroke: var(--viz-series-2); fill: var(--viz-series-2); }
-  #certificate-geometry-intuition .cgi-series-2 { color: var(--viz-series-3); stroke: var(--viz-series-3); fill: var(--viz-series-3); }
-  #certificate-geometry-intuition .cgi-series-3 { color: var(--viz-series-4); stroke: var(--viz-series-4); fill: var(--viz-series-4); }
-  #certificate-geometry-intuition .cgi-series-4 { color: var(--viz-series-5); stroke: var(--viz-series-5); fill: var(--viz-series-5); }
-  #certificate-geometry-intuition .cgi-series-5 { color: var(--viz-series-6); stroke: var(--viz-series-6); fill: var(--viz-series-6); }
-  #certificate-geometry-intuition .cgi-series-6 { color: var(--viz-series-1); stroke: var(--viz-series-1); fill: var(--viz-series-1); }
-  #certificate-geometry-intuition .cgi-active-side { stroke-width: 6; stroke-linecap: round; }
+  #certificate-geometry-intuition .cgi-closest { stroke: var(--orange); stroke-width: 4; stroke-linecap: round; }
+  #certificate-geometry-intuition .cgi-global-circle { fill: none; stroke: var(--orange); stroke-width: 1.5; stroke-dasharray: 4 4; opacity: 0.7; }
+  #certificate-geometry-intuition .cgi-global-label { fill: var(--orange); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #certificate-geometry-intuition .cgi-global-guide { stroke: var(--orange); stroke-width: 1.25; opacity: 0.75; }
+  #certificate-geometry-intuition .cgi-series-1,
+  #certificate-geometry-intuition .cgi-series-2,
+  #certificate-geometry-intuition .cgi-series-3,
+  #certificate-geometry-intuition .cgi-series-4,
+  #certificate-geometry-intuition .cgi-series-5,
+  #certificate-geometry-intuition .cgi-series-6 { color: var(--viz-series-3); stroke: var(--viz-series-3); fill: var(--viz-series-3); }
+  #certificate-geometry-intuition .cgi-side-badge { fill: var(--background); stroke-width: 2.2; }
+  #certificate-geometry-intuition .cgi-side-number { font-size: 11px; font-weight: 500; dominant-baseline: central; }
+  #certificate-geometry-intuition .cgi-contribution-badge { fill: var(--background); stroke-width: 1.5; }
+  #certificate-geometry-intuition .cgi-contribution-number { font-size: 11px; font-weight: 500; dominant-baseline: central; }
+  #certificate-geometry-intuition .cgi-badge-leader { stroke: var(--muted-foreground); stroke-width: 1; opacity: 0.55; }
+  #certificate-geometry-intuition .cgi-arrowhead { fill: var(--viz-series-3); }
+  #certificate-geometry-intuition .cgi-transform-arrow { fill: var(--muted-foreground); font-size: 14px; font-weight: 500; }
+  #certificate-geometry-intuition .cgi-row-tag { fill: var(--viz-series-5); font-size: 12px; font-style: italic; font-weight: 500; }
+  #certificate-geometry-intuition .cgi-balance-zero { fill: var(--background); stroke: var(--foreground); stroke-width: 1.5; }
+  #certificate-geometry-intuition #cgi-physical .cgi-active-side { stroke-width: 2.25; stroke-linecap: butt; }
   #certificate-geometry-intuition .cgi-vector { fill: none; stroke-width: 3; stroke-linecap: round; }
-  #certificate-geometry-intuition .cgi-contact { stroke: var(--background); stroke-width: 1.5; }
+  #certificate-geometry-intuition .cgi-contact-normal { stroke-width: 2.2; }
+  #certificate-geometry-intuition .cgi-contact { fill: var(--viz-series-3); stroke: var(--background); stroke-width: 1.5; }
+  #certificate-geometry-intuition .cgi-world-axis { stroke: var(--muted-foreground); stroke-width: 1; stroke-dasharray: 3 5; opacity: 0.3; }
+  #certificate-geometry-intuition .cgi-symmetry-ray { stroke: var(--viz-series-5); stroke-width: 1.6; opacity: 0.85; }
+  #certificate-geometry-intuition .cgi-symmetry-ray-tip { fill: var(--viz-series-5); }
+  #certificate-geometry-intuition .cgi-mirror-axis { fill: none; stroke-width: 1.25; stroke-dasharray: 3 5; opacity: 0.32; }
+  #certificate-geometry-intuition .cgi-mirror-outer { stroke: var(--muted-foreground); }
+  #certificate-geometry-intuition .cgi-mirror-inner { stroke: var(--viz-series-5); }
+  #certificate-geometry-intuition .cgi-mirror-aligned { stroke: var(--viz-series-5); stroke-width: 1.5; opacity: 0.5; }
+  #certificate-geometry-intuition .cgi-mirror-label { fill: var(--muted-foreground); font-size: 11px; font-weight: 400; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #certificate-geometry-intuition .cgi-center-link { stroke: var(--viz-series-5); stroke-width: 1.5; stroke-dasharray: 2 4; opacity: 0.8; }
+  #certificate-geometry-intuition .cgi-center-outer { fill: var(--background); stroke: var(--foreground); stroke-width: 1.6; }
+  #certificate-geometry-intuition .cgi-center-inner { fill: var(--viz-series-5); stroke: var(--background); stroke-width: 1.5; }
+  #certificate-geometry-intuition .cgi-center-halo { fill: none; stroke: var(--viz-series-5); stroke-width: 2; opacity: 0.58; }
+  #certificate-geometry-intuition .cgi-symmetry-status { min-height: 2.8em; margin-top: 0.25rem; text-align: center; color: var(--muted-foreground); }
+  #certificate-geometry-intuition .cgi-symmetry-status strong { color: var(--foreground); font-weight: 500; }
   #certificate-geometry-intuition .cgi-number { fill: var(--foreground); font-size: 12px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
   #certificate-geometry-intuition .cgi-math-label { fill: var(--foreground); font-size: 12px; }
-  #certificate-geometry-intuition .cgi-equation { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 0.4rem 0.65rem; margin-top: 0.7rem; }
-  #certificate-geometry-intuition .cgi-equation strong { font-weight: 500; }
-  #certificate-geometry-intuition .cgi-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1rem; margin-top: 0.45rem; }
-  #certificate-geometry-intuition .cgi-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
-  #certificate-geometry-intuition .cgi-key { width: 0.7rem; height: 0.7rem; border-radius: 50%; display: inline-block; }
-  #certificate-geometry-intuition .cgi-key-1 { background: var(--viz-series-2); }
-  #certificate-geometry-intuition .cgi-key-2 { background: var(--viz-series-3); }
-  #certificate-geometry-intuition .cgi-key-3 { background: var(--viz-series-4); }
-  #certificate-geometry-intuition .cgi-key-global { background: var(--orange); }
-  #certificate-geometry-intuition #cgi-status { text-align: center; margin-top: 0.35rem; }
-  @media (max-width: 820px) {
+  #certificate-geometry-intuition .cgi-plane-label { fill: var(--muted-foreground); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; }
+  #certificate-geometry-intuition .cgi-plane-equation { fill: var(--foreground); font-size: 11px; }
+  #certificate-geometry-intuition .cgi-projection-label { fill: var(--viz-series-5); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #certificate-geometry-intuition .cgi-axis-label { fill: var(--muted-foreground); font-size: 11px; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #certificate-geometry-intuition .cgi-point-label { fill: var(--viz-series-5); font-size: 11px; font-style: italic; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #certificate-geometry-intuition .cgi-current-label { fill: var(--viz-series-5); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #certificate-geometry-intuition .cgi-label-leader { stroke: var(--viz-series-5); stroke-width: 1; opacity: 0.65; }
+  #certificate-geometry-intuition .cgi-row-divider { stroke: var(--border); stroke-width: 1; opacity: 0.65; }
+  #certificate-geometry-intuition #cgi-physical .cgi-frame { stroke-opacity: 0.28; }
+  #certificate-geometry-intuition .cgi-derivation { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem 0.55rem; margin-top: 0.55rem; padding-top: 0.55rem; border-top: 1px solid var(--border); }
+  #certificate-geometry-intuition .cgi-derivation span { display: inline-grid; gap: 0.08rem; text-align: center; }
+  #certificate-geometry-intuition .cgi-derivation strong { color: var(--foreground); font-weight: 500; }
+  #certificate-geometry-intuition .cgi-derivation small { color: var(--muted-foreground); }
+  #certificate-geometry-intuition .cgi-derivation b { color: var(--muted-foreground); font-weight: 500; }
+  @media (max-width: 979px) {
     #certificate-geometry-intuition .cgi-panels { grid-template-columns: 1fr; }
+    #certificate-geometry-intuition .cgi-panel-caption { min-height: 0; }
     #certificate-geometry-intuition #cgi-physical,
     #certificate-geometry-intuition #cgi-certificate { max-width: 520px; margin-inline: auto; }
     #certificate-geometry-intuition #cgi-bridge { max-width: 520px; margin-inline: auto; }
@@ -1146,23 +1184,29 @@ html&gt;body{padding:0}&lt;/style&gt;
   const outerControl = root.querySelector(&#x27;#cgi-outer&#x27;);
   const angleControl = root.querySelector(&#x27;#cgi-angle&#x27;);
   const angleValue = root.querySelector(&#x27;#cgi-angle-value&#x27;);
+  const orientationState = root.querySelector(&#x27;#cgi-orientation-state&#x27;);
   const optimumButton = root.querySelector(&#x27;#cgi-optimum&#x27;);
   const physicalSvg = root.querySelector(&#x27;#cgi-physical&#x27;);
   const bridgeSvg = root.querySelector(&#x27;#cgi-bridge&#x27;);
   const certificateSvg = root.querySelector(&#x27;#cgi-certificate&#x27;);
-  const distanceLabel = root.querySelector(&#x27;#cgi-distance&#x27;);
-  const scaleLabel = root.querySelector(&#x27;#cgi-scale&#x27;);
-  const status = root.querySelector(&#x27;#cgi-status&#x27;);
+  const contactSummary = root.querySelector(&#x27;#cgi-contact-summary&#x27;);
+  const generatorSummary = root.querySelector(&#x27;#cgi-generator-summary&#x27;);
+  const certificateSummary = root.querySelector(&#x27;#cgi-certificate-summary&#x27;);
+  const symmetryStatus = root.querySelector(&#x27;#cgi-symmetry-status&#x27;);
   const NS = &#x27;http://www.w3.org/2000/svg&#x27;;
   const TAU = 2 * Math.PI;
-  let innerSides = 5;
+  let innerSides = 4;
   let outerSides = 8;
   let apothem = Math.cos(Math.PI / 8);
+  let outerFrame = {vertices: [], facets: []};
   let normals = [];
   let cages = [];
+  let innerReferencePhase = 0;
+  let preferredGlobalPhi = 0;
   let certificateHull = [];
   let closestEdges = [];
   let globalAngles = [];
+  let globalDistance = Infinity;
 
   const add = (a, b) =&gt; ({x: a.x + b.x, y: a.y + b.y});
   const sub = (a, b) =&gt; ({x: a.x - b.x, y: a.y - b.y});
@@ -1188,24 +1232,55 @@ html&gt;body{padding:0}&lt;/style&gt;
     svg.appendChild(label);
   }
 
-  function regularVertices(count, theta = 0) {
-    return Array.from({length: count}, (_, k) =&gt; ({x: Math.cos(theta + k * TAU / count), y: Math.sin(theta + k * TAU / count)}));
+  function regularVertices(count, angle = 0) {
+    return Array.from({length: count}, (_, k) =&gt; ({x: Math.cos(angle + k * TAU / count), y: Math.sin(angle + k * TAU / count)}));
+  }
+
+  function outerFrameForAxis(count, axisClass = &#x27;vertex&#x27;) {
+    // Odd polygons use their vertex-edge mirror line on x. For even polygons,
+    // vertex-axis optima use x and edge-midpoint optima use y, making the two
+    // dihedral axis classes visually distinct.
+    const sharedAxisAngle = count % 2 === 0 &amp;&amp; axisClass === &#x27;edge&#x27; ? Math.PI / 2 : 0;
+    const vertexPhase = count % 2 === 1
+      ? -Math.PI / count
+      : axisClass === &#x27;edge&#x27; ? sharedAxisAngle - Math.PI / count : 0;
+    const vertices = regularVertices(count, vertexPhase);
+    const facets = vertices.map((a, index) =&gt; {
+      const b = vertices[(index + 1) % count];
+      const normalAngle = vertexPhase + (index + 0.5) * TAU / count;
+      return {a, b, normal: {x: Math.cos(normalAngle), y: Math.sin(normalAngle)}};
+    });
+    return {vertices, facets, vertexPhase, sharedAxisAngle, axisClass: count % 2 === 0 ? axisClass : &#x27;vertex-edge&#x27;};
   }
 
   function convexHull(points) {
-    const canonical = points.map(p =&gt; ({x: Number(p.x.toPrecision(13)), y: Number(p.y.toPrecision(13))}));
+    const coordinateTolerance = 1e-10;
+    const xRepresentatives = new Map(), yRepresentatives = new Map();
+    const mergeNearby = (value, representatives) =&gt; {
+      const key = Math.round(value / coordinateTolerance);
+      for (let offset = -1; offset &lt;= 1; offset++) {
+        const representative = representatives.get(key + offset);
+        if (representative !== undefined &amp;&amp; Math.abs(representative - value) &lt;= coordinateTolerance) return representative;
+      }
+      representatives.set(key, value);
+      return value;
+    };
+    const canonical = points.map(p =&gt; ({
+      x: mergeNearby(p.x, xRepresentatives),
+      y: mergeNearby(p.y, yRepresentatives)
+    }));
     const unique = [...new Map(canonical.map(p =&gt; [`${p.x},${p.y}`, p])).values()].sort((a, b) =&gt; a.x - b.x || a.y - b.y);
     if (unique.length &lt;= 2) return unique;
     const turn = (o, a, b) =&gt; cross(sub(a, o), sub(b, o));
     const lower = [];
     for (const p of unique) {
-      while (lower.length &gt;= 2 &amp;&amp; turn(lower.at(-2), lower.at(-1), p) &lt;= 1e-11) lower.pop();
+      while (lower.length &gt;= 2 &amp;&amp; turn(lower.at(-2), lower.at(-1), p) &lt;= 1e-12) lower.pop();
       lower.push(p);
     }
     const upper = [];
     for (let i = unique.length - 1; i &gt;= 0; i--) {
       const p = unique[i];
-      while (upper.length &gt;= 2 &amp;&amp; turn(upper.at(-2), upper.at(-1), p) &lt;= 1e-11) upper.pop();
+      while (upper.length &gt;= 2 &amp;&amp; turn(upper.at(-2), upper.at(-1), p) &lt;= 1e-12) upper.pop();
       upper.push(p);
     }
     lower.pop();
@@ -1231,8 +1306,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     return [a[0][3], a[1][3], a[2][3]];
   }
 
-  function fitAt(theta) {
-    const vertices = regularVertices(innerSides, theta);
+  function fitAtVertexPhase(vertexPhase) {
+    const vertices = regularVertices(innerSides, vertexPhase);
     const support = normals.map(n =&gt; Math.max(...vertices.map(p =&gt; dot(n, p))));
     let best = null;
     for (let i = 0; i &lt; outerSides - 2; i++) for (let j = i + 1; j &lt; outerSides - 1; j++) for (let k = j + 1; k &lt; outerSides; k++) {
@@ -1243,9 +1318,62 @@ html&gt;body{padding:0}&lt;/style&gt;
       const feasible = normals.every((n, q) =&gt; n.x * cx + n.y * cy + support[q] * size &lt;= apothem + 2e-9);
       if (feasible &amp;&amp; (!best || size &gt; best.size)) best = {cx, cy, size};
     }
-    if (!best) return {theta, cx: 0, cy: 0, size: 0, polygon: []};
+    if (!best) return {vertexPhase, cx: 0, cy: 0, size: 0, polygon: [], centeredBySymmetry: false};
+    let centeredBySymmetry = false;
+    if (gcd(innerSides, outerSides) &gt; 1) {
+      const centeredSize = Math.min(...support.map(value =&gt; apothem / value));
+      if (Math.abs(centeredSize - best.size) &lt;= 2e-8 * Math.max(1, best.size)) {
+        best = {cx: 0, cy: 0, size: centeredSize};
+        centeredBySymmetry = true;
+      }
+    }
+    const mirror = nearestMirrorAxes(vertexPhase);
+    if (mirror.gap &lt;= 2e-10) {
+      const axis = {x: Math.cos(mirror.outerAngle), y: Math.sin(mirror.outerAngle)};
+      const axialCenter = scalePoint(dot({x: best.cx, y: best.cy}, axis), axis);
+      const axialFeasible = normals.every((n, q) =&gt;
+        dot(n, axialCenter) + support[q] * best.size &lt;= apothem + 2e-9
+      );
+      if (axialFeasible) best = {...best, cx: axialCenter.x, cy: axialCenter.y};
+    }
     const polygon = vertices.map(p =&gt; ({x: best.cx + best.size * p.x, y: best.cy + best.size * p.y}));
-    return {...best, theta, polygon};
+    return {...best, vertexPhase, polygon, centeredBySymmetry};
+  }
+
+  function fitAt(phi) {
+    return {...fitAtVertexPhase(innerReferencePhase + phi), phi};
+  }
+
+  function selectInnerReference(sharedAxisAngle) {
+    const vertexFit = fitAtVertexPhase(sharedAxisAngle);
+    const edgePhase = Math.PI / innerSides;
+    const edgeFit = fitAtVertexPhase(sharedAxisAngle + edgePhase);
+    const tolerance = 2e-9 * Math.max(1, vertexFit.size, edgeFit.size);
+    if (edgeFit.size &lt;= vertexFit.size + tolerance) return {phase: 0, phi: sharedAxisAngle, size: vertexFit.size, axisClass: &#x27;vertex&#x27;};
+    // For odd n, rotating the vertex-based reference ray by π produces
+    // the edge-based placement modulo the polygon&#x27;s 2π/n rotational symmetry.
+    if (innerSides % 2 === 1) return {phase: 0, phi: mod(sharedAxisAngle + Math.PI, TAU), size: edgeFit.size, axisClass: &#x27;vertex-edge-reversed&#x27;};
+    return {phase: edgePhase, phi: sharedAxisAngle, size: edgeFit.size, axisClass: &#x27;edge&#x27;};
+  }
+
+  function lineAngleDistance(a, b) {
+    return Math.abs(Math.atan2(Math.sin(2 * (a - b)), Math.cos(2 * (a - b)))) / 2;
+  }
+
+  function nearestMirrorAxes(vertexPhase) {
+    let nearest = null;
+    for (let i = 0; i &lt; innerSides; i++) {
+      const innerAngle = vertexPhase + i * Math.PI / innerSides;
+      for (let j = 0; j &lt; outerSides; j++) {
+        const outerAngle = j * Math.PI / outerSides;
+        const gap = lineAngleDistance(innerAngle, outerAngle);
+        const canonicalGap = lineAngleDistance(outerAngle, outerFrame.sharedAxisAngle ?? 0);
+        if (!nearest || gap &lt; nearest.gap - 1e-12 || (Math.abs(gap - nearest.gap) &lt;= 1e-12 &amp;&amp; canonicalGap &lt; nearest.canonicalGap - 1e-12)) {
+          nearest = {innerAngle, outerAngle, gap, canonicalGap};
+        }
+      }
+    }
+    return nearest;
   }
 
   function enumerateCages() {
@@ -1270,7 +1398,7 @@ html&gt;body{padding:0}&lt;/style&gt;
   }
 
   function buildCertificate() {
-    const inner = regularVertices(innerSides);
+    const inner = regularVertices(innerSides, innerReferencePhase);
     const points = [];
     cages.forEach(cage =&gt; {
       let sumHull = [{x: 0, y: 0}];
@@ -1283,9 +1411,9 @@ html&gt;body{padding:0}&lt;/style&gt;
     return convexHull(points);
   }
 
-  function activePatterns(theta) {
-    const direction = {x: Math.cos(theta), y: Math.sin(theta)};
-    const inner = regularVertices(innerSides);
+  function activePatterns(phi) {
+    const direction = {x: Math.cos(phi), y: Math.sin(phi)};
+    const inner = regularVertices(innerSides, innerReferencePhase);
     let best = -Infinity;
     const cageRows = [];
     cages.forEach((cage, cageIndex) =&gt; {
@@ -1324,14 +1452,18 @@ html&gt;body{padding:0}&lt;/style&gt;
     const rows = certificateHull.map((u, i) =&gt; {
       const v = certificateHull[(i + 1) % certificateHull.length];
       const d = sub(v, u);
-      const distance = Math.abs(cross(u, v)) / Math.hypot(d.x, d.y);
+      const lengthSquared = dot(d, d);
+      const t = lengthSquared &lt;= 1e-20 ? 0 : Math.max(0, Math.min(1, -dot(u, d) / lengthSquared));
+      const closestPoint = add(u, scalePoint(t, d));
+      const distance = Math.hypot(closestPoint.x, closestPoint.y);
       minimum = Math.min(minimum, distance);
-      return {i, u, v, distance};
+      return {i, u, v, t, closestPoint, distance};
     });
     return rows.filter(row =&gt; Math.abs(row.distance - minimum) &lt;= 1e-8);
   }
 
   function outwardNormal(edge) {
+    if (edge.distance &gt; 1e-12) return scalePoint(1 / edge.distance, edge.closestPoint);
     const d = sub(edge.v, edge.u);
     let n = {x: d.y, y: -d.x};
     n = scalePoint(1 / Math.hypot(n.x, n.y), n);
@@ -1368,32 +1500,80 @@ html&gt;body{padding:0}&lt;/style&gt;
     return points.map(p =&gt; ({x: box.width / 2 + factor * (p.x - centerX), y: box.height / 2 - factor * (p.y - centerY)}));
   }
 
-  function exposedSideMap(patterns) {
-    const facets = [...new Set(patterns.flatMap(pattern =&gt; pattern.contributions.map(item =&gt; item.facet)))].sort((a, b) =&gt; a - b);
-    return new Map(facets.map((facet, i) =&gt; [facet, i + 1]));
+  function tightSideMap(fit) {
+    const facets = normals.map((normal, facet) =&gt; {
+      const support = Math.max(...fit.polygon.map(point =&gt; dot(normal, point)));
+      return Math.abs(support - apothem) &lt;= 3e-7 ? facet : null;
+    }).filter(facet =&gt; facet !== null);
+    return new Map(facets.map(facet =&gt; [facet, facet + 1]));
+  }
+
+  function uniqueGeneratorPatterns(patterns) {
+    const unique = new Map();
+    patterns.forEach(pattern =&gt; {
+      const key = `${pattern.point.x.toPrecision(11)},${pattern.point.y.toPrecision(11)}`;
+      const existing = unique.get(key);
+      if (existing) existing.multiplicity += 1;
+      else unique.set(key, {...pattern, multiplicity: 1});
+    });
+    return [...unique.values()];
   }
 
   function seriesClass(number) {
-    return `cgi-series-${((number - 1) % 6) + 1}`;
+    // Side numbers carry identity; one color carries the single meaning
+    // &quot;tight/contact data&quot; in both physical and certificate constructions.
+    return &#x27;cgi-series-1&#x27;;
   }
 
-  function drawPhysical(fit, patterns, sideMap) {
+  function drawPhysical(fit, patterns, sideMap, isGlobal) {
     const box = setupSvg(physicalSvg);
     const span = Math.min(box.width, box.height) - 48;
-    const map = {x: x =&gt; box.width / 2 + x * span * 0.47, y: y =&gt; box.height / 2 - y * span * 0.47};
-    const outer = regularVertices(outerSides, Math.PI / outerSides);
+    const map = {x: x =&gt; box.width / 2 + x * span * 0.43, y: y =&gt; box.height / 2 - y * span * 0.43};
+    const outer = outerFrame.vertices;
+    const mirror = nearestMirrorAxes(fit.vertexPhase);
+    const mirrorOffset = Math.abs(cross({x: fit.cx, y: fit.cy}, {x: Math.cos(mirror.outerAngle), y: Math.sin(mirror.outerAngle)}));
+    const mirrorAligned = mirror.gap &lt;= 0.0025 &amp;&amp; mirrorOffset &lt;= 0.003;
+    const showMirror = mirrorAligned;
+    const axisRadius = 1.03;
+    const axisLine = (angle, center, className) =&gt; physicalSvg.appendChild(node(&#x27;line&#x27;, {
+      x1: map.x(center.x - axisRadius * Math.cos(angle)), y1: map.y(center.y - axisRadius * Math.sin(angle)),
+      x2: map.x(center.x + axisRadius * Math.cos(angle)), y2: map.y(center.y + axisRadius * Math.sin(angle)),
+      class: `cgi-mirror-axis ${className}${mirrorAligned ? &#x27; cgi-mirror-aligned&#x27; : &#x27;&#x27;}`
+    }));
+    const sharedAxis = {x: Math.cos(outerFrame.sharedAxisAngle), y: Math.sin(outerFrame.sharedAxisAngle)};
+    physicalSvg.appendChild(node(&#x27;line&#x27;, {
+      x1: map.x(-axisRadius * sharedAxis.x), y1: map.y(-axisRadius * sharedAxis.y),
+      x2: map.x(axisRadius * sharedAxis.x), y2: map.y(axisRadius * sharedAxis.y),
+      class: &#x27;cgi-world-axis&#x27;
+    }));
+    if (showMirror) axisLine(mirror.outerAngle, {x: 0, y: 0}, &#x27;cgi-mirror-aligned&#x27;);
     physicalSvg.appendChild(node(&#x27;polygon&#x27;, {points: pointsAttribute(outer, map), class: &#x27;cgi-outer&#x27;}));
     sideMap.forEach((number, facet) =&gt; {
-      const a = outer[(facet - 1 + outerSides) % outerSides];
-      const b = outer[facet];
+      const {a, b} = outerFrame.facets[facet];
       physicalSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(a.x), y1: map.y(a.y), x2: map.x(b.x), y2: map.y(b.y), class: `cgi-active-side ${seriesClass(number)}`}));
     });
     physicalSvg.appendChild(node(&#x27;polygon&#x27;, {points: pointsAttribute(fit.polygon, map), class: &#x27;cgi-inner&#x27;}));
+    const rayLength = Math.max(0.22, 0.78 * fit.size);
+    const rayTip = {
+      x: fit.cx + rayLength * Math.cos(fit.phi),
+      y: fit.cy + rayLength * Math.sin(fit.phi)
+    };
+    physicalSvg.appendChild(node(&#x27;line&#x27;, {
+      x1: map.x(fit.cx), y1: map.y(fit.cy), x2: map.x(rayTip.x), y2: map.y(rayTip.y), class: &#x27;cgi-symmetry-ray&#x27;
+    }));
+    physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(rayTip.x), cy: map.y(rayTip.y), r: 3, class: &#x27;cgi-symmetry-ray-tip&#x27;}));
+    const contactFeatures = new Set();
+    const contactMarkers = new Map();
     sideMap.forEach((number, facet) =&gt; {
       const n = normals[facet];
       const values = fit.polygon.map(p =&gt; dot(n, p));
       const maximum = Math.max(...values);
       const contactPoints = fit.polygon.filter((p, i) =&gt; maximum - values[i] &lt;= 2e-7);
+      if (!contactPoints.length) return;
+      const contactKey = contactPoints.length &gt; 1
+        ? `segment:${contactPoints.map(p =&gt; `${p.x.toPrecision(9)},${p.y.toPrecision(9)}`).sort().join(&#x27;|&#x27;)}`
+        : `point:${contactPoints[0].x.toPrecision(9)},${contactPoints[0].y.toPrecision(9)}`;
+      contactFeatures.add(contactKey);
       if (contactPoints.length &gt; 1) physicalSvg.appendChild(node(&#x27;line&#x27;, {
         x1: map.x(contactPoints[0].x), y1: map.y(contactPoints[0].y),
         x2: map.x(contactPoints.at(-1).x), y2: map.y(contactPoints.at(-1).y),
@@ -1402,10 +1582,25 @@ html&gt;body{padding:0}&lt;/style&gt;
       const center = contactPoints.reduce((sum, p) =&gt; add(sum, p), {x: 0, y: 0});
       center.x /= contactPoints.length;
       center.y /= contactPoints.length;
-      physicalSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(center.x), y1: map.y(center.y), x2: map.x(center.x + 0.18 * n.x), y2: map.y(center.y + 0.18 * n.y), class: `cgi-vector ${seriesClass(number)}`}));
-      contactPoints.forEach(p =&gt; physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(p.x), cy: map.y(p.y), r: 6, class: `cgi-contact ${seriesClass(number)}`})));
-      textNode(physicalSvg, String(number), map.x(center.x) + 9, map.y(center.y) - 8, &#x27;cgi-number&#x27;);
+      physicalSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(center.x), y1: map.y(center.y), x2: map.x(center.x + 0.14 * n.x), y2: map.y(center.y + 0.14 * n.y), class: `cgi-vector cgi-contact-normal ${seriesClass(number)}`}));
+      contactPoints.forEach(p =&gt; contactMarkers.set(`${p.x.toPrecision(9)},${p.y.toPrecision(9)}`, p));
+      const {a, b} = outerFrame.facets[facet];
+      const sideMidpoint = scalePoint(0.5, add(a, b));
+      const badgePoint = add(sideMidpoint, scalePoint(0.14, n));
+      physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(badgePoint.x), cy: map.y(badgePoint.y), r: 9, class: `cgi-side-badge ${seriesClass(number)}`}));
+      textNode(physicalSvg, String(number), map.x(badgePoint.x), map.y(badgePoint.y), `cgi-side-number ${seriesClass(number)}`, &#x27;middle&#x27;);
     });
+    contactMarkers.forEach(point =&gt; physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(point.x), cy: map.y(point.y), r: 6, class: &#x27;cgi-contact&#x27;})));
+    const centerDistance = Math.hypot(fit.cx, fit.cy);
+    if (centerDistance &gt; 2e-7) physicalSvg.appendChild(node(&#x27;line&#x27;, {
+      x1: map.x(0), y1: map.y(0), x2: map.x(fit.cx), y2: map.y(fit.cy), class: &#x27;cgi-center-link&#x27;
+    }));
+    physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(0), cy: map.y(0), r: 5.5, class: &#x27;cgi-center-outer&#x27;}));
+    physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(fit.cx), cy: map.y(fit.cy), r: 4, class: &#x27;cgi-center-inner&#x27;}));
+    if (centerDistance &lt;= 2e-7 &amp;&amp; isGlobal) physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(0), cy: map.y(0), r: 9, class: &#x27;cgi-center-halo&#x27;}));
+    const referenceAxisAligned = lineAngleDistance(fit.phi, outerFrame.sharedAxisAngle) &lt;= 0.0025
+      &amp;&amp; Math.abs(cross({x: fit.cx, y: fit.cy}, sharedAxis)) &lt;= 0.003;
+    return {mirror, mirrorAligned, mirrorOffset, referenceAxisAligned, centerDistance, showMirror, contactFeatureCount: contactFeatures.size};
   }
 
   function chainIntoBox(vectors, x, y, width, height) {
@@ -1419,61 +1614,215 @@ html&gt;body{padding:0}&lt;/style&gt;
     return points.map(p =&gt; ({x: x + width / 2 + factor * (p.x - cx), y: y + height / 2 - factor * (p.y - cy)}));
   }
 
-  function drawBridge(patterns, sideMap) {
+  function supportLayout(vectors, phi, x, y, width, height) {
+    const chain = [{x: 0, y: 0}];
+    vectors.forEach(vector =&gt; chain.push(add(chain.at(-1), vector)));
+    const direction = {x: Math.cos(phi), y: Math.sin(phi)};
+    const endpoint = chain.at(-1);
+    const projection = dot(endpoint, direction);
+    const foot = scalePoint(projection, direction);
+    const axisReach = Math.max(0.2, Math.abs(projection) * 1.15);
+    const axisA = scalePoint(-0.12 * axisReach, direction);
+    const axisB = scalePoint(axisReach, direction);
+    const all = [...chain, foot, axisA, axisB];
+    const xs = all.map(point =&gt; point.x), ys = all.map(point =&gt; point.y);
+    const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+    const factor = Math.min(width / Math.max(1e-9, maxX - minX), height / Math.max(1e-9, maxY - minY));
+    const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+    const map = point =&gt; ({x: x + width / 2 + factor * (point.x - cx), y: y + height / 2 - factor * (point.y - cy)});
+    return {chain: chain.map(map), origin: map(chain[0]), endpoint: map(endpoint), foot: map(foot), axisA: map(axisA), axisB: map(axisB)};
+  }
+
+  function pointSegmentDistance(point, a, b) {
+    const segment = sub(b, a);
+    const lengthSquared = dot(segment, segment);
+    if (lengthSquared &lt;= 1e-12) return Math.hypot(point.x - a.x, point.y - a.y);
+    const t = Math.max(0, Math.min(1, dot(sub(point, a), segment) / lengthSquared));
+    const nearest = add(a, scalePoint(t, segment));
+    return Math.hypot(point.x - nearest.x, point.y - nearest.y);
+  }
+
+  function separatedBadgePositions(chain, bounds, extraSegments = []) {
+    const segments = chain.slice(0, -1).map((point, i) =&gt; ({a: point, b: chain[i + 1]}));
+    const centroid = chain.reduce((sum, point) =&gt; add(sum, point), {x: 0, y: 0});
+    centroid.x /= chain.length;
+    centroid.y /= chain.length;
+    const placed = [];
+    const withinBounds = point =&gt; point.x &gt;= bounds.left &amp;&amp; point.x &lt;= bounds.right &amp;&amp; point.y &gt;= bounds.top &amp;&amp; point.y &lt;= bounds.bottom;
+    const candidateClearance = point =&gt; Math.min(
+      ...segments.concat(extraSegments).map(segment =&gt; pointSegmentDistance(point, segment.a, segment.b) - 12.5),
+      ...chain.map(marker =&gt; Math.hypot(point.x - marker.x, point.y - marker.y) - 15),
+      ...(placed.length ? placed.map(other =&gt; Math.hypot(point.x - other.x, point.y - other.y) - 19) : [Infinity])
+    );
+    const canonicalNormal = segment =&gt; {
+      const direction = sub(segment.b, segment.a);
+      const length = Math.max(1e-9, Math.hypot(direction.x, direction.y));
+      let normal = {x: -direction.y / length, y: direction.x / length};
+      if (normal.y &gt; 1e-9 || (Math.abs(normal.y) &lt;= 1e-9 &amp;&amp; normal.x &lt; 0)) normal = scalePoint(-1, normal);
+      return normal;
+    };
+    const result = segments.map(segment =&gt; {
+      const normal = canonicalNormal(segment);
+      const midpoint = add(segment.a, scalePoint(0.5, sub(segment.b, segment.a)));
+      const outwardSign = dot(normal, sub(midpoint, centroid)) &gt;= 0 ? 1 : -1;
+      const candidates = [];
+      [14, -14, 22, -22, 31, -31].forEach(lane =&gt; {
+        const signedLane = lane * outwardSign;
+        [0.5, 0.38, 0.62, 0.25, 0.75].forEach(t =&gt; {
+          const base = add(segment.a, scalePoint(t, sub(segment.b, segment.a)));
+          const point = add(base, scalePoint(signedLane, normal));
+          if (withinBounds(point)) candidates.push({base, point, clearance: candidateClearance(point)});
+        });
+      });
+      const chosen = candidates.find(candidate =&gt; candidate.clearance &gt;= 0)
+        ?? candidates.sort((a, b) =&gt; b.clearance - a.clearance)[0]
+        ?? {base: midpoint, point: midpoint};
+      placed.push(chosen.point);
+      return {base: chosen.base, point: chosen.point};
+    });
+    return result;
+  }
+
+  function drawBridge(patterns, sideMap, phi) {
     const shown = patterns.slice(0, 6);
-    const width = Math.max(280, Math.round(bridgeSvg.getBoundingClientRect().width || 320));
-    const rowHeight = 82;
-    const height = 34 + shown.length * rowHeight;
+    const width = Math.max(260, Math.round(bridgeSvg.getBoundingClientRect().width || 340));
+    const rowHeight = 94;
+    const headerHeight = 82;
+    const height = headerHeight + shown.length * rowHeight;
     bridgeSvg.setAttribute(&#x27;viewBox&#x27;, `0 0 ${width} ${height}`);
     bridgeSvg.style.aspectRatio = `${width} / ${height}`;
     bridgeSvg.replaceChildren();
+    const defs = node(&#x27;defs&#x27;);
+    const marker = node(&#x27;marker&#x27;, {id: &#x27;cgi-vector-arrow&#x27;, viewBox: &#x27;0 0 6 6&#x27;, refX: 5.2, refY: 3, markerWidth: 5, markerHeight: 5, orient: &#x27;auto&#x27;});
+    marker.appendChild(node(&#x27;path&#x27;, {d: &#x27;M0,0 L6,3 L0,6 Z&#x27;, class: &#x27;cgi-arrowhead&#x27;}));
+    defs.appendChild(marker);
+    bridgeSvg.appendChild(defs);
     bridgeSvg.appendChild(node(&#x27;rect&#x27;, {x: 16, y: 16, width: width - 32, height: height - 32, class: &#x27;cgi-frame&#x27;}));
-    textNode(bridgeSvg, &#x27;balanced normals: Σλn = 0&#x27;, width * 0.27, 31, &#x27;cgi-math-label&#x27;, &#x27;middle&#x27;);
-    textNode(bridgeSvg, &#x27;support sum: ΣλL = g&#x27;, width * 0.74, 31, &#x27;cgi-math-label&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;NORMAL BALANCE&#x27;, width * 0.25, 23, &#x27;cgi-plane-label&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;physical plane&#x27;, width * 0.25, 39, &#x27;cgi-axis-label&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;Σλᵢnᵢ = 0&#x27;, width * 0.25, 57, &#x27;cgi-plane-equation&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;aΣλᵢ = 1&#x27;, width * 0.25, 73, &#x27;cgi-plane-equation&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;CERTIFICATE POINT&#x27;, width * 0.75, 23, &#x27;cgi-plane-label&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;transformed coordinates&#x27;, width * 0.75, 39, &#x27;cgi-axis-label&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;gᵢ = ΣλᵢLₙᵢ(pᵢ)&#x27;, width * 0.75, 57, &#x27;cgi-plane-equation&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, &#x27;uφ·gᵢ = d(φ)&#x27;, width * 0.75, 73, &#x27;cgi-plane-equation&#x27;, &#x27;middle&#x27;);
     shown.forEach((pattern, row) =&gt; {
-      const top = 39 + row * rowHeight;
+      const top = headerHeight + row * rowHeight;
       const weighted = pattern.contributions.map(item =&gt; scalePoint(item.weight, normals[item.facet]));
-      const leftChain = chainIntoBox(weighted, 25, top + 12, width * 0.38, rowHeight - 28);
-      const rightChain = chainIntoBox(pattern.contributions.map(item =&gt; item.vector), width * 0.54, top + 12, width * 0.37, rowHeight - 28);
-      textNode(bridgeSvg, `g${row + 1}`, width * 0.48, top + rowHeight / 2, &#x27;cgi-math-label&#x27;, &#x27;middle&#x27;);
-      pattern.contributions.forEach((item, i) =&gt; {
-        const number = sideMap.get(item.facet);
-        const className = `cgi-vector ${seriesClass(number)}`;
-        bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: leftChain[i].x, y1: leftChain[i].y, x2: leftChain[i + 1].x, y2: leftChain[i + 1].y, class: className}));
-        bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: rightChain[i].x, y1: rightChain[i].y, x2: rightChain[i + 1].x, y2: rightChain[i + 1].y, class: className}));
-        textNode(bridgeSvg, String(number), (rightChain[i].x + rightChain[i + 1].x) / 2 + 5, (rightChain[i].y + rightChain[i + 1].y) / 2 - 4, &#x27;cgi-number&#x27;);
+      const leftChain = chainIntoBox(weighted, 30, top + 10, width * 0.34, rowHeight - 36);
+      const support = supportLayout(pattern.contributions.map(item =&gt; item.vector), phi, width * 0.58, top + 10, width * 0.31, rowHeight - 36);
+      const rightChain = support.chain;
+      const badgeYBounds = {top: top + 9, bottom: top + rowHeight - 12};
+      const leftBadges = separatedBadgePositions(leftChain, {
+        left: 25, right: width * 0.445, ...badgeYBounds
       });
-      bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: leftChain[0].x, cy: leftChain[0].y, r: 3, class: &#x27;cgi-origin&#x27;}));
-      bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: rightChain.at(-1).x, cy: rightChain.at(-1).y, r: 5, class: &#x27;cgi-current-point&#x27;}));
+      const rightObstacles = [
+        {a: support.axisA, b: support.axisB},
+        {a: support.origin, b: support.foot},
+        {a: support.endpoint, b: support.foot}
+      ];
+      const rightBadges = separatedBadgePositions(rightChain, {
+        left: width * 0.585, right: width - 24, ...badgeYBounds
+      }, rightObstacles);
+      bridgeSvg.appendChild(node(&#x27;line&#x27;, {
+        x1: support.axisA.x, y1: support.axisA.y, x2: support.axisB.x, y2: support.axisB.y,
+        class: &#x27;cgi-orientation-axis&#x27;
+      }));
+      const badgeRecords = [];
+      pattern.contributions.forEach((item, i) =&gt; {
+        const number = sideMap.get(item.facet) ?? item.facet + 1;
+        const className = `cgi-vector ${seriesClass(number)}`;
+        bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: leftChain[i].x, y1: leftChain[i].y, x2: leftChain[i + 1].x, y2: leftChain[i + 1].y, class: className, &#x27;marker-end&#x27;: &#x27;url(#cgi-vector-arrow)&#x27;}));
+        bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: rightChain[i].x, y1: rightChain[i].y, x2: rightChain[i + 1].x, y2: rightChain[i + 1].y, class: className, &#x27;marker-end&#x27;: &#x27;url(#cgi-vector-arrow)&#x27;}));
+        badgeRecords.push({number, badge: leftBadges[i]}, {number, badge: rightBadges[i]});
+      });
+      bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: support.endpoint.x, y1: support.endpoint.y, x2: support.foot.x, y2: support.foot.y, class: &#x27;cgi-projection-guide&#x27;}));
+      bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: support.origin.x, y1: support.origin.y, x2: support.foot.x, y2: support.foot.y, class: &#x27;cgi-projection&#x27;}));
+      badgeRecords.forEach(({badge}) =&gt; {
+        const displacement = sub(badge.point, badge.base);
+        const length = Math.hypot(displacement.x, displacement.y);
+        if (length &lt;= 1) return;
+        const end = add(badge.base, scalePoint(Math.max(0, length - 9) / length, displacement));
+        bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: badge.base.x, y1: badge.base.y, x2: end.x, y2: end.y, class: &#x27;cgi-badge-leader&#x27;}));
+      });
+      badgeRecords.forEach(({number, badge}) =&gt; {
+        bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: badge.point.x, cy: badge.point.y, r: 8, class: `cgi-contribution-badge ${seriesClass(number)}`}));
+      });
+      badgeRecords.forEach(({number, badge}) =&gt; {
+        textNode(bridgeSvg, String(number), badge.point.x, badge.point.y, `cgi-contribution-number ${seriesClass(number)}`, &#x27;middle&#x27;);
+      });
+      bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: leftChain[0].x, cy: leftChain[0].y, r: 5, class: &#x27;cgi-balance-zero&#x27;}));
+      textNode(bridgeSvg, &#x27;0&#x27;, leftChain[0].x + 7, leftChain[0].y - 7, &#x27;cgi-axis-label&#x27;);
+      bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: support.endpoint.x, cy: support.endpoint.y, r: 5, class: &#x27;cgi-current-point&#x27;}));
+      textNode(bridgeSvg, `g${row + 1}`, width * 0.545, top + 18, &#x27;cgi-row-tag&#x27;, &#x27;end&#x27;);
+      textNode(bridgeSvg, &#x27;→&#x27;, width * 0.49, top + 42, &#x27;cgi-transform-arrow&#x27;, &#x27;middle&#x27;);
+      if (row &lt; shown.length - 1) bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: 28, y1: top + rowHeight, x2: width - 28, y2: top + rowHeight, class: &#x27;cgi-row-divider&#x27;}));
     });
   }
 
-  function drawCertificate(theta, patterns) {
+  function drawCertificate(phi, patterns, isGlobal) {
     const box = setupSvg(certificateSvg);
+    const defs = node(&#x27;defs&#x27;);
+    const clipPath = node(&#x27;clipPath&#x27;, {id: &#x27;cgi-certificate-clip&#x27;});
+    clipPath.appendChild(node(&#x27;rect&#x27;, {x: 17, y: 17, width: box.width - 34, height: box.height - 34}));
+    defs.appendChild(clipPath);
+    certificateSvg.appendChild(defs);
     const extent = Math.max(...certificateHull.map(p =&gt; Math.max(Math.abs(p.x), Math.abs(p.y)))) * 1.25;
     const span = Math.min(box.width, box.height) - 52;
     const map = {x: x =&gt; box.width / 2 + x * span / (2 * extent), y: y =&gt; box.height / 2 - y * span / (2 * extent)};
     certificateSvg.appendChild(node(&#x27;polygon&#x27;, {points: pointsAttribute(certificateHull, map), class: &#x27;cgi-cert&#x27;}));
+    const globalRadiusPixels = globalDistance * span / (2 * extent);
+    certificateSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(0), cy: map.y(0), r: globalRadiusPixels, class: &#x27;cgi-global-circle&#x27;}));
+    const globalLabelDirection = {x: -Math.cos(phi), y: -Math.sin(phi)};
+    const globalCirclePoint = scalePoint(globalDistance, globalLabelDirection);
+    const globalLabelPoint = scalePoint(globalDistance + 0.16 * extent, globalLabelDirection);
+    const globalLabelX = Math.max(55, Math.min(box.width - 55, map.x(globalLabelPoint.x)));
+    const globalLabelY = Math.max(26, Math.min(box.height - 26, map.y(globalLabelPoint.y)));
+    certificateSvg.appendChild(node(&#x27;line&#x27;, {
+      x1: map.x(globalCirclePoint.x), y1: map.y(globalCirclePoint.y),
+      x2: globalLabelX, y2: globalLabelY,
+      class: &#x27;cgi-global-guide&#x27;
+    }));
+    textNode(
+      certificateSvg,
+      &#x27;global radius d*&#x27;,
+      globalLabelX,
+      globalLabelY - 4,
+      &#x27;cgi-global-label&#x27;,
+      &#x27;middle&#x27;
+    );
     certificateHull.forEach(p =&gt; certificateSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(p.x), cy: map.y(p.y), r: 2, class: &#x27;cgi-cert-point&#x27;})));
     closestEdges.forEach(edge =&gt; certificateSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(edge.u.x), y1: map.y(edge.u.y), x2: map.x(edge.v.x), y2: map.y(edge.v.y), class: &#x27;cgi-closest&#x27;})));
-    const direction = {x: Math.cos(theta), y: Math.sin(theta)};
+    const direction = {x: Math.cos(phi), y: Math.sin(phi)};
     const distance = patterns[0].value;
     const tangent = {x: -direction.y, y: direction.x};
     const lineA = add(scalePoint(distance, direction), scalePoint(-2 * extent, tangent));
     const lineB = add(scalePoint(distance, direction), scalePoint(2 * extent, tangent));
-    certificateSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(lineA.x), y1: map.y(lineA.y), x2: map.x(lineB.x), y2: map.y(lineB.y), class: &#x27;cgi-tangent&#x27;}));
+    certificateSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(lineA.x), y1: map.y(lineA.y), x2: map.x(lineB.x), y2: map.y(lineB.y), class: &#x27;cgi-tangent&#x27;, &#x27;clip-path&#x27;: &#x27;url(#cgi-certificate-clip)&#x27;}));
+    const supportLabelPoint = add(scalePoint(distance, direction), scalePoint(0.58 * extent, tangent));
+    const supportLabelX = Math.max(48, Math.min(box.width - 48, map.x(supportLabelPoint.x)));
+    const supportLabelY = Math.max(30, Math.min(box.height - 30, map.y(supportLabelPoint.y) - 6));
+    textNode(certificateSvg, isGlobal ? &#x27;current = global&#x27; : &#x27;current support&#x27;, supportLabelX, supportLabelY, &#x27;cgi-current-label&#x27;, &#x27;middle&#x27;);
     certificateSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(0), y1: map.y(0), x2: map.x(distance * direction.x), y2: map.y(distance * direction.y), class: &#x27;cgi-distance-line&#x27;}));
     certificateSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(0), cy: map.y(0), r: 3, class: &#x27;cgi-origin&#x27;}));
-    const exposedPoints = [...new Map(patterns.map(pattern =&gt; [`${pattern.point.x.toPrecision(12)},${pattern.point.y.toPrecision(12)}`, pattern.point])).values()];
+    const exposedPoints = patterns.map(pattern =&gt; pattern.point);
     if (exposedPoints.length &gt; 1) {
       const ordered = [...exposedPoints].sort((a, b) =&gt; dot(tangent, a) - dot(tangent, b));
       certificateSvg.appendChild(node(&#x27;line&#x27;, {x1: map.x(ordered[0].x), y1: map.y(ordered[0].y), x2: map.x(ordered.at(-1).x), y2: map.y(ordered.at(-1).y), class: &#x27;cgi-exposed&#x27;}));
     }
+    const screenNormal = {x: direction.x, y: -direction.y};
     exposedPoints.forEach((point, i) =&gt; {
-      certificateSvg.appendChild(node(&#x27;circle&#x27;, {cx: map.x(point.x), cy: map.y(point.y), r: 6, class: &#x27;cgi-current-point&#x27;}));
-      textNode(certificateSvg, `g${i + 1}`, map.x(point.x) + 8, map.y(point.y) - 7, &#x27;cgi-math-label&#x27;);
+      const px = map.x(point.x), py = map.y(point.y);
+      certificateSvg.appendChild(node(&#x27;circle&#x27;, {cx: px, cy: py, r: i &lt; 6 ? 6 : 3, class: &#x27;cgi-current-point&#x27;}));
+      if (i &gt;= 6) return;
+      const sign = i % 2 === 0 ? 1 : -1;
+      const offset = 14 + 5 * Math.floor(i / 2);
+      const labelX = Math.max(28, Math.min(box.width - 28, px + sign * offset * screenNormal.x));
+      const labelY = Math.max(26, Math.min(box.height - 26, py + sign * offset * screenNormal.y));
+      certificateSvg.appendChild(node(&#x27;line&#x27;, {x1: px, y1: py, x2: labelX, y2: labelY, class: &#x27;cgi-label-leader&#x27;}));
+      textNode(certificateSvg, `g${i + 1}`, labelX + (sign * screenNormal.x &gt;= 0 ? 3 : -3), labelY - 3, &#x27;cgi-math-label&#x27;, sign * screenNormal.x &gt;= 0 ? &#x27;start&#x27; : &#x27;end&#x27;);
     });
-    textNode(certificateSvg, &#x27;d&#x27;, map.x(distance * direction.x / 2) + 7, map.y(distance * direction.y / 2) - 7, &#x27;cgi-math-label&#x27;);
+    textNode(certificateSvg, isGlobal ? &#x27;d(φ) = d*&#x27; : &#x27;d(φ)&#x27;, map.x(distance * direction.x / 2) + 7, map.y(distance * direction.y / 2) - 7, &#x27;cgi-current-label&#x27;);
     return distance;
   }
 
@@ -1483,49 +1832,93 @@ html&gt;body{padding:0}&lt;/style&gt;
     innerControl.value = String(innerSides);
     outerControl.value = String(outerSides);
     apothem = Math.cos(Math.PI / outerSides);
-    normals = Array.from({length: outerSides}, (_, j) =&gt; ({x: Math.cos(j * TAU / outerSides), y: Math.sin(j * TAU / outerSides)}));
+    const outerAxisClasses = outerSides % 2 === 0 ? [&#x27;vertex&#x27;, &#x27;edge&#x27;] : [&#x27;vertex-edge&#x27;];
+    let selectedFrame = null;
+    outerAxisClasses.forEach(axisClass =&gt; {
+      const frame = outerFrameForAxis(outerSides, axisClass);
+      outerFrame = frame;
+      normals = frame.facets.map(facet =&gt; facet.normal);
+      const reference = selectInnerReference(frame.sharedAxisAngle);
+      const tolerance = 2e-9 * Math.max(1, reference.size, selectedFrame?.reference.size ?? 0);
+      if (!selectedFrame || reference.size &gt; selectedFrame.reference.size + tolerance) selectedFrame = {frame, reference};
+    });
+    outerFrame = selectedFrame.frame;
+    normals = outerFrame.facets.map(facet =&gt; facet.normal);
     cages = enumerateCages();
+    const reference = selectedFrame.reference;
+    innerReferencePhase = reference.phase;
+    preferredGlobalPhi = reference.phi;
     certificateHull = buildCertificate();
     closestEdges = closestCertificateEdges();
+    globalDistance = activePatterns(preferredGlobalPhi)[0]?.value ?? Infinity;
     globalAngles = closestEdges.map(edge =&gt; {
       const n = outwardNormal(edge);
       return mod(Math.atan2(n.y, n.x), TAU);
     });
+    angleControl.value = String(preferredGlobalPhi * 180 / Math.PI);
     draw();
   }
 
   function draw() {
     if (!certificateHull.length) return;
-    const theta = Number(angleControl.value) * Math.PI / 180;
-    const fit = fitAt(theta);
-    const patterns = activePatterns(theta);
-    const sideMap = exposedSideMap(patterns);
-    drawPhysical(fit, patterns, sideMap);
-    drawBridge(patterns, sideMap);
-    const distance = drawCertificate(theta, patterns);
+    const phi = Number(angleControl.value) * Math.PI / 180;
+    const fit = fitAt(phi);
+    const patterns = activePatterns(phi);
+    const currentSupport = patterns[0]?.value ?? Infinity;
+    const globalTolerance = 1e-9 * Math.max(1, globalDistance);
+    const isGlobal = Math.abs(currentSupport - globalDistance) &lt;= globalTolerance;
+    const nearestGlobalGap = Math.min(...globalAngles.map(value =&gt; Math.abs(Math.atan2(Math.sin(phi - value), Math.cos(phi - value)))));
+    const isNearGlobal = !isGlobal &amp;&amp; nearestGlobalGap &lt;= 0.003;
+    const generatorPatterns = uniqueGeneratorPatterns(patterns);
+    const sideMap = tightSideMap(fit);
+    const physicalState = drawPhysical(fit, patterns, sideMap, isGlobal);
+    drawBridge(generatorPatterns, sideMap, phi);
+    const distance = drawCertificate(phi, generatorPatterns, isGlobal);
     const scale = 1 / distance;
-    const isGlobal = globalAngles.some(value =&gt; Math.abs(Math.atan2(Math.sin(theta - value), Math.cos(theta - value))) &lt;= 0.003);
-    angleValue.textContent = `${(theta * 180 / Math.PI).toFixed(2)}°`;
-    distanceLabel.textContent = `d = ${distance.toFixed(7)}`;
-    scaleLabel.textContent = `μ = 1/d = ${scale.toFixed(7)}`;
+    angleValue.textContent = `${(phi * 180 / Math.PI).toFixed(2)}°`;
+    orientationState.textContent = isGlobal ? &#x27;global optimum&#x27; : isNearGlobal ? &#x27;near optimum—not exact&#x27; : &#x27;not global&#x27;;
+    orientationState.dataset.global = String(isGlobal);
+    orientationState.dataset.near = String(isNearGlobal);
     const sides = [...sideMap.keys()].map(facet =&gt; facet + 1).join(&#x27;, &#x27;);
-    const hidden = patterns.length &gt; 6 ? ` The bridge shows 6 of ${patterns.length} tied generators.` : &#x27;&#x27;;
+    const shownGenerators = Math.min(6, generatorPatterns.length);
     const repeatDegrees = 360 / (innerSides * outerSides / gcd(innerSides, outerSides));
-    status.textContent = `${patterns.length} exposed generator${patterns.length === 1 ? &#x27;&#x27; : &#x27;s&#x27;} jointly use outer sides ${sides}. Their union supplies ${sideMap.size} physical contact side${sideMap.size === 1 ? &#x27;&#x27; : &#x27;s&#x27;}. The physical solver gives μ = ${fit.size.toFixed(7)}, matching the certificate reciprocal${isGlobal ? ` at a global optimum; equivalent optima repeat every ${repeatDegrees.toFixed(6)}°` : &#x27;&#x27;}.${hidden} Numerical regular-polygon illustration.`;
+    const sharedOrder = gcd(innerSides, outerSides);
+    const mirrorGapDegrees = physicalState.mirror.gap * 180 / Math.PI;
+    const centerText = sharedOrder &gt; 1 &amp;&amp; physicalState.centerDistance &lt;= 2e-7 &amp;&amp; isGlobal
+      ? `&lt;strong&gt;Centers:&lt;/strong&gt; overlap at a global optimum; gcd(${innerSides}, ${outerSides}) = ${sharedOrder} guarantees a centered representative.`
+      : sharedOrder &gt; 1 &amp;&amp; physicalState.centerDistance &lt;= 2e-7
+        ? `&lt;strong&gt;Centers:&lt;/strong&gt; overlap for this φ, not the overall best; gcd = ${sharedOrder} guarantees existence, not uniqueness.`
+      : sharedOrder &gt; 1
+        ? `&lt;strong&gt;Center:&lt;/strong&gt; shared order ${sharedOrder} predicts a centered optimizer; the displayed numerical fit is offset by ${physicalState.centerDistance.toFixed(5)}.`
+      : physicalState.centerDistance &lt;= 2e-7
+        ? &#x27;&lt;strong&gt;Center:&lt;/strong&gt; coincident here, but not symmetry-forced because gcd = 1.&#x27;
+        : `&lt;strong&gt;Center:&lt;/strong&gt; offset by ${physicalState.centerDistance.toFixed(5)}; gcd = 1 gives no centering guarantee.`;
+    const sharedAxisName = outerFrame.sharedAxisAngle === 0 ? &#x27;x-axis&#x27; : &#x27;y-axis&#x27;;
+    const outerAxisKind = outerFrame.axisClass === &#x27;edge&#x27; ? &#x27;edge-midpoint&#x27; : outerFrame.axisClass === &#x27;vertex&#x27; ? &#x27;vertex-axis&#x27; : &#x27;vertex-edge&#x27;;
+    const mirrorText = physicalState.referenceAxisAligned &amp;&amp; isGlobal
+      ? `&lt;strong&gt;Symmetry:&lt;/strong&gt; the purple ray lies on the shared ${sharedAxisName} (${outerAxisKind}) at this global optimum.`
+      : physicalState.mirrorAligned
+        ? &#x27;&lt;strong&gt;Mirrors:&lt;/strong&gt; a shared axis is shown.&#x27;
+      : mirrorGapDegrees &lt;= 0.15
+        ? `&lt;strong&gt;Mirrors:&lt;/strong&gt; parallel axes, line offset ${physicalState.mirrorOffset.toFixed(5)}.`
+        : `&lt;strong&gt;Mirrors:&lt;/strong&gt; nearest axis gap ${mirrorGapDegrees.toFixed(2)}°; an axis is drawn only when they coincide.`;
+    symmetryStatus.innerHTML = `${centerText}&lt;br&gt;${mirrorText}`;
+    contactSummary.textContent = `${physicalState.contactFeatureCount} contact location${physicalState.contactFeatureCount === 1 ? &#x27;&#x27; : &#x27;s&#x27;} · ${sideMap.size} tight side${sideMap.size === 1 ? &#x27;&#x27; : &#x27;s&#x27;}${sideMap.size === outerSides ? &#x27; · all outer sides&#x27; : &#x27;&#x27;}`;
+    generatorSummary.textContent = `${patterns.length} balanced construction${patterns.length === 1 ? &#x27;&#x27; : &#x27;s&#x27;} collapse to ${generatorPatterns.length} distinct gᵢ${generatorPatterns.length &gt; shownGenerators ? ` · ${shownGenerators} shown` : &#x27;&#x27;} · all share d(φ)`;
+    const globalScale = 1 / globalDistance;
+    certificateSummary.innerHTML = isGlobal
+      ? `Current = global: d(φ) = d* = ${distance.toFixed(6)} → μ* = ${scale.toFixed(6)}&lt;br&gt;Equivalent optima repeat every ${repeatDegrees.toFixed(3)}°.`
+      : `Current: d(φ) = ${distance.toFixed(6)} → μ(φ) = ${scale.toFixed(6)}&lt;br&gt;Global: d* = ${globalDistance.toFixed(6)} → μ* = ${globalScale.toFixed(6)}`;
+    physicalSvg.setAttribute(&#x27;aria-label&#x27;, `Fixed-orientation fit with ${physicalState.contactFeatureCount} contact features and tight outer sides ${sides}.`);
+    bridgeSvg.setAttribute(&#x27;aria-label&#x27;, `${patterns.length} tied balanced constructions produce ${generatorPatterns.length} distinct support-sum points; every shown point has support distance ${distance.toFixed(7)}.`);
+    certificateSvg.setAttribute(&#x27;aria-label&#x27;, `Certificate polygon with current support distance ${distance.toFixed(7)} and global minimum support distance ${globalDistance.toFixed(7)}.`);
   }
 
   innerControl.addEventListener(&#x27;change&#x27;, configure);
   outerControl.addEventListener(&#x27;change&#x27;, configure);
   angleControl.addEventListener(&#x27;input&#x27;, draw);
   optimumButton.addEventListener(&#x27;click&#x27;, () =&gt; {
-    if (!globalAngles.length) return;
-    const current = Number(angleControl.value) * Math.PI / 180;
-    const nearest = globalAngles.reduce((best, candidate) =&gt; {
-      const bestDistance = Math.abs(Math.atan2(Math.sin(best - current), Math.cos(best - current)));
-      const candidateDistance = Math.abs(Math.atan2(Math.sin(candidate - current), Math.cos(candidate - current)));
-      return candidateDistance &lt; bestDistance ? candidate : best;
-    });
-    angleControl.value = String(nearest * 180 / Math.PI);
+    angleControl.value = String(preferredGlobalPhi * 180 / Math.PI);
     draw();
   });
   new ResizeObserver(draw).observe(physicalSvg);

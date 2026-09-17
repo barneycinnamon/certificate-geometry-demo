@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="About the interactive Containment Geometry Lab demonstrations for regular polygons and Platonic solids.">
+<title>About | Containment Geometry Lab</title>
+<link rel="stylesheet" href="../assets/site-shell.css">
+</head>
+<body class="about-page">
+<header class="site-header">
+  <a class="site-brand" href="../">Containment Geometry Lab</a>
+  <nav class="site-nav" aria-label="Demonstrations">
+    <a href="../">Regular polygons <span class="nav-dimension">2D</span></a>
+    <a href="../platonic/">Platonic solids <span class="nav-dimension">3D</span></a>
+    <a href="./" aria-current="page">About</a>
+  </nav>
+</header>
+<main class="about-main">
+  <h1>About the Containment Geometry Lab</h1>
+  <p class="about-lede">This collection explores how large one symmetric convex shape can become while it is translated and rotated inside another.</p>
+  <p>Each demonstration follows the same thread: tight contacts form a balanced cage, the balancing weights produce certificate data, and that data controls the achievable scale.</p>
+
+  <section aria-labelledby="about-polygons">
+    <h2 id="about-polygons">Regular polygons · 2D</h2>
+    <p>For regular polygons, the certificate data lives in a plane. The demonstration connects physical contacts to a balanced normal cage and then to a certificate polygon. Its support distance <i>d</i>(φ) gives the displayed containment scale μ(φ)=1/<i>d</i>(φ).</p>
+  </section>
+
+  <section aria-labelledby="about-solids">
+    <h2 id="about-solids">Platonic solids · 3D</h2>
+    <p>In three dimensions, the analogous certificate is matrix-valued and generally cannot be drawn as an ordinary polyhedron. The demonstration therefore presents a fixed-axis slice. At every slider angle it re-optimizes translation and scale; the score curves form an upper envelope <i>d</i>(θ), with μ(θ)=1/<i>d</i>(θ).</p>
+  </section>
+
+  <section class="scope-note" aria-labelledby="about-scope">
+    <h2 id="about-scope">Scope</h2>
+    <p>These are explanatory numerical tools, not formal proof artifacts or authority records from the Coxeter Containment program. In particular, the marked Platonic-solid “best” is the numerically sampled best on the selected one-axis slice—not a certified global optimum over all rotations in SO(3).</p>
+  </section>
+</main>
+<footer class="site-footer">Interactive explanations of contact cages and certificate geometry. Numerical illustrations—not formal certificates.</footer>
+</body>
+</html>

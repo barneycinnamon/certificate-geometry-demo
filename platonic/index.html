@@ -1,0 +1,2505 @@
+<!doctype html>
+<html lang="en" data-visualize-standalone>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'self' 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="An interactive fixed-axis certificate geometry demonstration for pairs of Platonic solids.">
+<title>Platonic Solids | Containment Geometry Lab</title>
+<link rel="stylesheet" href="../assets/site-shell.css">
+</head>
+<body class="site-page">
+<header class="site-header">
+  <a class="site-brand" href="../">Containment Geometry Lab</a>
+  <nav class="site-nav" aria-label="Demonstrations">
+    <a href="../">Regular polygons <span class="nav-dimension">2D</span></a>
+    <a href="./" aria-current="page">Platonic solids <span class="nav-dimension">3D</span></a>
+    <a href="../about/">About</a>
+  </nav>
+</header>
+<main class="demo-frame-wrap">
+<h1 class="sr-only">Platonic solid certificate geometry demonstration</h1>
+<iframe class="demo-frame" sandbox="allow-scripts" referrerpolicy="no-referrer" title="Platonic solid certificate geometry demonstration" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Platonic Certificate Geometry&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --icon-size: 16px;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --corner-shape: round;
+  --radius: var(--border-radius-lg, 10px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: var(--visualize-paint-gutter, 0px);
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans) !important;
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: var(--corner-shape);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card, .progress) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin-block: 6px;
+  border: 0;
+  background: var(--border);
+}
+
+.nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 4px;
+}
+
+.progress {
+  display: flex;
+  height: 8px;
+  margin-block: calc((var(--line-height-normal, 1.5em) - 8px) / 2);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+}
+
+.progress-bar:only-child {
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  height: 100%;
+  flex-shrink: 0;
+  border: 0;
+  background: var(--viz-series-1);
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.nav-link,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn,
+.nav-link {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover,
+.nav-link:not(:disabled):not([aria-disabled=&quot;true&quot;]):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.nav-pills .nav-link {
+  min-width: 0;
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.nav-justified .nav-link {
+  flex: 1 1 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.nav-pills .nav-link.active {
+  color: var(--foreground);
+  background: var(--muted);
+}
+
+.btn:disabled,
+.nav-link:disabled,
+.nav-link[aria-disabled=&quot;true&quot;] {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: var(--corner-shape);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: var(--corner-shape);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: var(--corner-shape);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+  [aria-pressed=&quot;true&quot;],
+  [aria-selected=&quot;true&quot;],
+  .is-selected
+) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .btn,
+  .nav-link,
+  .form-control,
+  .form-select {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Keep small-screen WebKit from zooming when a text field receives focus. */
+  .form-control,
+  .form-select {
+    font-size: max(16px, var(--font-size-normal));
+  }
+
+  .form-control[type=&quot;file&quot;]::file-selector-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .form-control-color[type=&quot;color&quot;] {
+    width: 44px;
+    height: 44px;
+  }
+
+  .form-control:is(
+    [type=&quot;date&quot;],
+    [type=&quot;datetime-local&quot;],
+    [type=&quot;month&quot;],
+    [type=&quot;time&quot;],
+    [type=&quot;week&quot;]
+  ) {
+    min-width: 0;
+    max-width: 100%;
+    padding-block: 8px;
+  }
+
+  .form-check {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+  }
+
+  .form-check-input::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    content: &quot;&quot;;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-check-label {
+    display: inline-flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .form-range {
+    height: 44px;
+    touch-action: pan-y;
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    height: 44px;
+  }
+
+  .form-range::-moz-range-track {
+    height: 44px;
+  }
+
+  .form-range::-webkit-slider-thumb {
+    margin-top: 12px;
+  }
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;platonic-certificate-geometry&quot;&gt;
+  &lt;h2&gt;Platonic containment: from face contacts to a certificate slice&lt;/h2&gt;
+  &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Solid and rotation controls&quot;&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;pcg-inner&quot;&gt;Inner solid
+      &lt;select class=&quot;form-select&quot; id=&quot;pcg-inner&quot;&gt;
+        &lt;option value=&quot;tetrahedron&quot;&gt;Tetrahedron&lt;/option&gt;
+        &lt;option value=&quot;cube&quot;&gt;Cube&lt;/option&gt;
+        &lt;option value=&quot;octahedron&quot; selected&gt;Octahedron&lt;/option&gt;
+        &lt;option value=&quot;dodecahedron&quot;&gt;Dodecahedron&lt;/option&gt;
+        &lt;option value=&quot;icosahedron&quot;&gt;Icosahedron&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;pcg-outer&quot;&gt;Outer solid
+      &lt;select class=&quot;form-select&quot; id=&quot;pcg-outer&quot;&gt;
+        &lt;option value=&quot;tetrahedron&quot; selected&gt;Tetrahedron&lt;/option&gt;
+        &lt;option value=&quot;cube&quot;&gt;Cube&lt;/option&gt;
+        &lt;option value=&quot;octahedron&quot;&gt;Octahedron&lt;/option&gt;
+        &lt;option value=&quot;dodecahedron&quot;&gt;Dodecahedron&lt;/option&gt;
+        &lt;option value=&quot;icosahedron&quot;&gt;Icosahedron&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;form-label&quot; for=&quot;pcg-axis&quot;&gt;Inner rotation axis
+      &lt;select class=&quot;form-select&quot; id=&quot;pcg-axis&quot;&gt;
+        &lt;option value=&quot;x&quot;&gt;x-axis&lt;/option&gt;
+        &lt;option value=&quot;y&quot;&gt;y-axis&lt;/option&gt;
+        &lt;option value=&quot;z&quot; selected&gt;z-axis&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;form-label pcg-angle-control&quot; for=&quot;pcg-angle&quot;&gt;Inner rotation θ &lt;span id=&quot;pcg-angle-value&quot; class=&quot;tabular-nums&quot;&gt;0.00°&lt;/span&gt;
+      &lt;input class=&quot;form-range&quot; id=&quot;pcg-angle&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;360&quot; step=&quot;0.05&quot; value=&quot;0&quot;&gt;
+    &lt;/label&gt;
+    &lt;button class=&quot;btn&quot; id=&quot;pcg-best&quot; type=&quot;button&quot;&gt;Show sampled best on this axis slice&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pcg-scope text-small text-muted&quot;&gt;&lt;strong&gt;Scope:&lt;/strong&gt; translation and scale are re-optimized at every angle, but inner-solid rotation is restricted to the selected axis of the outer-solid frame. “Best” means best on this sampled one-parameter slice, not a certified optimum over all of SO(3).&lt;/div&gt;
+
+  &lt;div class=&quot;pcg-panels&quot;&gt;
+    &lt;section aria-labelledby=&quot;pcg-physical-title&quot;&gt;
+      &lt;h3 id=&quot;pcg-physical-title&quot;&gt;1 · Fit and face contacts&lt;/h3&gt;
+      &lt;div class=&quot;pcg-panel-caption text-small text-muted&quot;&gt;Purple is the contained solid. Green outer faces are tight; numbered purple outlines identify the cage worked through in Panel 2.&lt;/div&gt;
+      &lt;div id=&quot;pcg-physical-summary&quot; class=&quot;pcg-panel-summary text-small tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+      &lt;svg id=&quot;pcg-physical&quot; role=&quot;img&quot; aria-describedby=&quot;pcg-view-instruction&quot; aria-label=&quot;A Platonic solid optimally translated and scaled inside another at the selected fixed-axis rotation&quot;&gt;&lt;/svg&gt;
+      &lt;div class=&quot;viz-row pcg-view-controls text-small&quot;&gt;
+        &lt;span id=&quot;pcg-view-instruction&quot; class=&quot;text-muted&quot;&gt;Drag or touch to orbit both solids together (camera only). θ rotates the inner solid relative to the outer.&lt;/span&gt;
+        &lt;button class=&quot;btn&quot; id=&quot;pcg-reset-view&quot; type=&quot;button&quot; aria-controls=&quot;pcg-physical&quot;&gt;Reset view&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;pcg-key text-small text-muted&quot;&gt;Green marks contact features · open circle: outer center · purple dot: inner center · dashed link: chosen optimal translation&lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby=&quot;pcg-bridge-title&quot;&gt;
+      &lt;h3 id=&quot;pcg-bridge-title&quot;&gt;2 · One balanced cage, worked through&lt;/h3&gt;
+      &lt;div class=&quot;pcg-panel-caption text-small text-muted&quot;&gt;In three dimensions, a minimal cage needs at most four outward face normals. The arrows are certificate bookkeeping, not physical forces.&lt;/div&gt;
+      &lt;div class=&quot;pcg-example-selector&quot; aria-label=&quot;Choose an active cage example&quot;&gt;
+        &lt;button class=&quot;btn&quot; id=&quot;pcg-example-prev&quot; type=&quot;button&quot; aria-controls=&quot;pcg-physical pcg-bridge pcg-chart&quot;&gt;Previous example&lt;/button&gt;
+        &lt;span id=&quot;pcg-example-position&quot; class=&quot;pcg-example-position text-small tabular-nums&quot;&gt;&lt;/span&gt;
+        &lt;button class=&quot;btn&quot; id=&quot;pcg-example-next&quot; type=&quot;button&quot; aria-controls=&quot;pcg-physical pcg-bridge pcg-chart&quot;&gt;Next example&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;pcg-bridge-summary&quot; class=&quot;pcg-panel-summary pcg-bridge-summary text-small&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+      &lt;svg id=&quot;pcg-bridge&quot; role=&quot;img&quot; aria-label=&quot;A balanced three-dimensional normal cage transformed into one axis-slice certificate branch&quot;&gt;&lt;/svg&gt;
+      &lt;div class=&quot;pcg-derivation text-small&quot; aria-label=&quot;Why a balanced cage bounds scale independently of translation&quot;&gt;
+        &lt;span&gt;&lt;strong&gt;Normals balance&lt;/strong&gt;&lt;small&gt;Σλⱼnⱼ = 0&lt;/small&gt;&lt;/span&gt;
+        &lt;b&gt;+&lt;/b&gt;
+        &lt;span&gt;&lt;strong&gt;Same weights&lt;/strong&gt;&lt;small&gt;M = Σλⱼnⱼpⱼᵀ&lt;/small&gt;&lt;/span&gt;
+        &lt;b&gt;⇒&lt;/b&gt;
+        &lt;span&gt;&lt;strong&gt;Translation cancels from the bound&lt;/strong&gt;&lt;small&gt;μ⟨M,R(θ)⟩ ≤ 1&lt;/small&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby=&quot;pcg-chart-title&quot;&gt;
+      &lt;h3 id=&quot;pcg-chart-title&quot;&gt;3 · Certificate envelope → scale&lt;/h3&gt;
+      &lt;div class=&quot;pcg-panel-caption text-small text-muted&quot;&gt;Each matrix certificate becomes a score curve on this axis slice. The green upper envelope is d(θ), so μ(θ)=1/d(θ): lower d means a larger contained solid.&lt;/div&gt;
+      &lt;div id=&quot;pcg-chart-summary&quot; class=&quot;pcg-panel-summary text-small tabular-nums&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+      &lt;svg id=&quot;pcg-chart&quot; role=&quot;img&quot; aria-label=&quot;Axis-slice certificate score curves and their upper envelope&quot;&gt;&lt;/svg&gt;
+      &lt;div class=&quot;pcg-key text-small text-muted&quot;&gt;Gray: other exposed branches · purple: selected branch · green: envelope d(θ) · orange: sampled slice best&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;pcg-caveat text-small text-muted&quot;&gt;&lt;strong&gt;Why a slice?&lt;/strong&gt; The planar certificate is a drawable polygon. Here each certificate is a 3×3 matrix, so the full certificate body can live in nine dimensions. Panel 3 is an honest one-dimensional view of that higher-dimensional object.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  #platonic-certificate-geometry { width: 100%; color: var(--foreground); }
+  #platonic-certificate-geometry h2 { margin-bottom: 0.65rem; }
+  #platonic-certificate-geometry h3 { margin: 0 0 0.2rem; font-weight: 500; }
+  #platonic-certificate-geometry .viz-controls { align-items: end; margin-bottom: 0.45rem; }
+  #platonic-certificate-geometry .form-label { flex: 0 1 150px; min-width: 126px; }
+  #platonic-certificate-geometry .pcg-angle-control { flex: 1 1 270px; }
+  #platonic-certificate-geometry .pcg-scope { margin: 0 0 0.85rem; }
+  #platonic-certificate-geometry .pcg-scope strong { color: var(--foreground); font-weight: 500; }
+  #platonic-certificate-geometry .pcg-caveat { margin-top: 0.85rem; padding-top: 0.65rem; border-top: 1px solid var(--border); }
+  #platonic-certificate-geometry .pcg-caveat strong { color: var(--foreground); font-weight: 500; }
+  #platonic-certificate-geometry .pcg-panels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  #platonic-certificate-geometry section { min-width: 0; }
+  #platonic-certificate-geometry .pcg-panel-caption { min-height: 4.2em; }
+  #platonic-certificate-geometry .pcg-panel-summary { min-height: 3em; margin: 0.3rem 0 0.2rem; color: var(--foreground); font-weight: 500; }
+  #platonic-certificate-geometry .pcg-bridge-summary { min-height: 4.2em; }
+  #platonic-certificate-geometry .pcg-key { min-height: 2.8em; margin-top: 0.3rem; text-align: center; }
+  #platonic-certificate-geometry .pcg-view-controls { justify-content: center; margin-top: 0.3rem; text-align: center; }
+  #platonic-certificate-geometry .pcg-example-selector { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.45rem; min-height: 2.6rem; margin: 0.1rem 0 0.15rem; }
+  #platonic-certificate-geometry .pcg-example-position { min-width: 0; text-align: center; color: var(--foreground); font-weight: 500; }
+  #platonic-certificate-geometry svg { width: 100%; display: block; }
+  #platonic-certificate-geometry #pcg-physical { aspect-ratio: 1; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+  #platonic-certificate-geometry #pcg-physical.pcg-is-dragging { cursor: grabbing; }
+  #platonic-certificate-geometry #pcg-bridge { min-height: 570px; }
+  #platonic-certificate-geometry #pcg-chart { min-height: 420px; }
+  #platonic-certificate-geometry .pcg-frame { fill: none; stroke: var(--border); stroke-width: 1; }
+  #platonic-certificate-geometry .pcg-outer-face { fill: color-mix(in srgb, var(--foreground) 3%, transparent); stroke: var(--muted-foreground); stroke-width: 1.15; stroke-linejoin: round; }
+  #platonic-certificate-geometry .pcg-outer-face.pcg-back { opacity: 0.36; stroke-dasharray: 3 4; }
+  #platonic-certificate-geometry .pcg-outer-face.pcg-tight { fill: color-mix(in srgb, var(--green) 10%, transparent); stroke: var(--green); stroke-width: 1.8; opacity: 0.82; }
+  #platonic-certificate-geometry .pcg-inner-face { fill: color-mix(in srgb, var(--purple) 11%, transparent); stroke: var(--purple); stroke-width: 1.7; stroke-linejoin: round; }
+  #platonic-certificate-geometry .pcg-inner-face.pcg-back { opacity: 0.4; stroke-dasharray: 3 4; }
+  #platonic-certificate-geometry .pcg-selected-outline { fill: none; stroke: var(--purple); stroke-width: 2.5; stroke-linejoin: round; }
+  #platonic-certificate-geometry .pcg-contact { fill: var(--green); stroke: var(--background); stroke-width: 1.4; }
+  #platonic-certificate-geometry .pcg-contact-feature { fill: color-mix(in srgb, var(--green) 18%, transparent); stroke: var(--green); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  #platonic-certificate-geometry .pcg-contact-ring { fill: none; stroke: var(--purple); stroke-width: 1.6; }
+  #platonic-certificate-geometry .pcg-normal { stroke: var(--green); stroke-width: 2; }
+  #platonic-certificate-geometry .pcg-world-axis { stroke: var(--muted-foreground); stroke-width: 1.2; stroke-dasharray: 4 5; opacity: 0.55; }
+  #platonic-certificate-geometry .pcg-world-axis-label { fill: var(--muted-foreground); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-center-link { stroke: var(--purple); stroke-width: 1.4; stroke-dasharray: 3 4; opacity: 0.8; }
+  #platonic-certificate-geometry .pcg-center-outer { fill: var(--background); stroke: var(--foreground); stroke-width: 1.5; }
+  #platonic-certificate-geometry .pcg-center-inner { fill: var(--purple); stroke: var(--background); stroke-width: 1.4; }
+  #platonic-certificate-geometry .pcg-center-halo { fill: none; stroke: var(--purple); stroke-width: 1.5; opacity: 0.65; }
+  #platonic-certificate-geometry .pcg-face-badge { fill: var(--background); stroke: var(--purple); stroke-width: 1.8; }
+  #platonic-certificate-geometry .pcg-face-number { fill: var(--purple); font-size: 11px; font-weight: 500; dominant-baseline: central; }
+  #platonic-certificate-geometry .pcg-arrowhead { fill: var(--green); }
+  #platonic-certificate-geometry .pcg-result-arrowhead { fill: var(--purple); }
+  #platonic-certificate-geometry .pcg-vector { fill: none; stroke: var(--green); stroke-width: 3; stroke-linecap: round; }
+  #platonic-certificate-geometry .pcg-result { fill: none; stroke: var(--purple); stroke-width: 2; stroke-dasharray: 4 4; }
+  #platonic-certificate-geometry .pcg-zero { fill: var(--background); stroke: var(--foreground); stroke-width: 1.5; }
+  #platonic-certificate-geometry .pcg-closure-halo { fill: color-mix(in srgb, var(--green) 12%, transparent); stroke: var(--green); stroke-width: 2; }
+  #platonic-certificate-geometry .pcg-contribution-badge { fill: var(--background); stroke: var(--green); stroke-width: 1.5; }
+  #platonic-certificate-geometry .pcg-contribution-number { fill: var(--green); font-size: 11px; font-weight: 500; dominant-baseline: central; }
+  #platonic-certificate-geometry .pcg-badge-leader { stroke: var(--muted-foreground); stroke-width: 1; opacity: 0.55; }
+  #platonic-certificate-geometry .pcg-step-title { fill: var(--foreground); font-size: 12px; font-weight: 500; }
+  #platonic-certificate-geometry .pcg-step-note { fill: var(--muted-foreground); font-size: 11px; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-step-equation { fill: var(--foreground); font-size: 11px; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-balance-label { fill: var(--green); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-result-label { fill: var(--purple); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-divider { stroke: var(--border); stroke-width: 1; }
+  #platonic-certificate-geometry .pcg-same-weights { fill: var(--purple); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-axis { stroke: var(--border); stroke-width: 1; }
+  #platonic-certificate-geometry .pcg-grid { stroke: var(--border); stroke-width: 1; opacity: 0.65; }
+  #platonic-certificate-geometry .pcg-tick { fill: var(--muted-foreground); font-size: 11px; }
+  #platonic-certificate-geometry .pcg-axis-title { fill: var(--foreground); font-size: 12px; }
+  #platonic-certificate-geometry .pcg-other-branch { fill: none; stroke: var(--muted-foreground); stroke-width: 1; opacity: 0.25; }
+  #platonic-certificate-geometry .pcg-selected-branch { fill: none; stroke: var(--purple); stroke-width: 2; }
+  #platonic-certificate-geometry .pcg-envelope { fill: none; stroke: var(--green); stroke-width: 3; }
+  #platonic-certificate-geometry .pcg-current-guide { stroke: var(--purple); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  #platonic-certificate-geometry .pcg-best-guide { stroke: var(--orange); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  #platonic-certificate-geometry .pcg-current-point { fill: var(--purple); stroke: var(--background); stroke-width: 1.3; }
+  #platonic-certificate-geometry .pcg-best-point { fill: var(--orange); stroke: var(--background); stroke-width: 1.3; }
+  #platonic-certificate-geometry .pcg-chart-label { fill: var(--foreground); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--background); stroke-width: 3px; }
+  #platonic-certificate-geometry .pcg-purple-label { fill: var(--purple); }
+  #platonic-certificate-geometry .pcg-green-label { fill: var(--green); }
+  #platonic-certificate-geometry .pcg-orange-label { fill: var(--orange); }
+  #platonic-certificate-geometry .pcg-derivation { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem 0.55rem; margin-top: 0.55rem; padding: 0.55rem 0 0.35rem; border-top: 1px solid var(--border); }
+  #platonic-certificate-geometry .pcg-derivation span { display: inline-grid; gap: 0.08rem; text-align: center; }
+  #platonic-certificate-geometry .pcg-derivation strong { color: var(--foreground); font-weight: 500; }
+  #platonic-certificate-geometry .pcg-derivation small { color: var(--muted-foreground); }
+  #platonic-certificate-geometry .pcg-derivation b { color: var(--muted-foreground); font-weight: 500; }
+  @media (max-width: 1199px) and (min-width: 760px) {
+    #platonic-certificate-geometry .pcg-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #platonic-certificate-geometry .pcg-panels section:nth-child(3) { grid-column: 1 / -1; }
+    #platonic-certificate-geometry #pcg-chart { max-width: 700px; margin-inline: auto; }
+  }
+  @media (max-width: 759px) {
+    #platonic-certificate-geometry .pcg-panels { grid-template-columns: 1fr; }
+    #platonic-certificate-geometry .pcg-panel-caption { min-height: 0; }
+    #platonic-certificate-geometry #pcg-physical,
+    #platonic-certificate-geometry #pcg-bridge,
+    #platonic-certificate-geometry #pcg-chart { max-width: 540px; margin-inline: auto; }
+  }
+  @media (max-width: 379px) {
+    #platonic-certificate-geometry .pcg-example-selector { grid-template-columns: 1fr 1fr; }
+    #platonic-certificate-geometry .pcg-example-position { grid-column: 1 / -1; grid-row: 1; min-height: 2.6em; }
+    #platonic-certificate-geometry #pcg-example-prev { grid-column: 1; grid-row: 2; }
+    #platonic-certificate-geometry #pcg-example-next { grid-column: 2; grid-row: 2; }
+    #platonic-certificate-geometry .pcg-bridge-summary { min-height: 5.4em; }
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  const root = document.getElementById(&#x27;platonic-certificate-geometry&#x27;);
+  const innerControl = root.querySelector(&#x27;#pcg-inner&#x27;);
+  const outerControl = root.querySelector(&#x27;#pcg-outer&#x27;);
+  const axisControl = root.querySelector(&#x27;#pcg-axis&#x27;);
+  const angleControl = root.querySelector(&#x27;#pcg-angle&#x27;);
+  const angleValue = root.querySelector(&#x27;#pcg-angle-value&#x27;);
+  const bestButton = root.querySelector(&#x27;#pcg-best&#x27;);
+  const resetViewButton = root.querySelector(&#x27;#pcg-reset-view&#x27;);
+  const prevButton = root.querySelector(&#x27;#pcg-example-prev&#x27;);
+  const nextButton = root.querySelector(&#x27;#pcg-example-next&#x27;);
+  const examplePosition = root.querySelector(&#x27;#pcg-example-position&#x27;);
+  const physicalSummary = root.querySelector(&#x27;#pcg-physical-summary&#x27;);
+  const bridgeSummary = root.querySelector(&#x27;#pcg-bridge-summary&#x27;);
+  const chartSummary = root.querySelector(&#x27;#pcg-chart-summary&#x27;);
+  const physicalSvg = root.querySelector(&#x27;#pcg-physical&#x27;);
+  const bridgeSvg = root.querySelector(&#x27;#pcg-bridge&#x27;);
+  const chartSvg = root.querySelector(&#x27;#pcg-chart&#x27;);
+  const NS = &#x27;http://www.w3.org/2000/svg&#x27;;
+  const TAU = 2 * Math.PI;
+  const DEG = Math.PI / 180;
+  const PHI = (1 + Math.sqrt(5)) / 2;
+  const DEFAULT_CAMERA = {yaw: -0.72, pitch: -0.58};
+  const AXES = {x: {x: 1, y: 0, z: 0}, y: {x: 0, y: 1, z: 0}, z: {x: 0, y: 0, z: 1}};
+  const SOLID_NAMES = {
+    tetrahedron: &#x27;tetrahedron&#x27;, cube: &#x27;cube&#x27;, octahedron: &#x27;octahedron&#x27;,
+    dodecahedron: &#x27;dodecahedron&#x27;, icosahedron: &#x27;icosahedron&#x27;
+  };
+  const solidCache = new Map();
+  let innerSolid = null;
+  let outerSolid = null;
+  let axis = AXES.z;
+  let cages = [];
+  let sliceData = null;
+  let currentItems = [];
+  let selectedItemKey = null;
+  let selectedCageKey = null;
+  let chartGeometry = null;
+  let cameraYaw = DEFAULT_CAMERA.yaw;
+  let cameraPitch = DEFAULT_CAMERA.pitch;
+  let currentPhysicalFit = null;
+  let currentPhysicalPattern = null;
+  let orbitPointerId = null;
+  let orbitLastPoint = null;
+  let orbitRadiansPerPixel = 0.009;
+  let physicalRedrawFrame = null;
+
+  const v3 = (x, y, z) =&gt; ({x, y, z});
+  const add3 = (a, b) =&gt; v3(a.x + b.x, a.y + b.y, a.z + b.z);
+  const sub3 = (a, b) =&gt; v3(a.x - b.x, a.y - b.y, a.z - b.z);
+  const scale3 = (s, a) =&gt; v3(s * a.x, s * a.y, s * a.z);
+  const dot3 = (a, b) =&gt; a.x * b.x + a.y * b.y + a.z * b.z;
+  const cross3 = (a, b) =&gt; v3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+  const norm3 = a =&gt; Math.hypot(a.x, a.y, a.z);
+  const unit3 = a =&gt; scale3(1 / Math.max(1e-15, norm3(a)), a);
+  const det3 = (a, b, c) =&gt; dot3(a, cross3(b, c));
+  const mod = (x, m) =&gt; ((x % m) + m) % m;
+  const subscriptNumber = value =&gt; String(value).replace(/\d/g, digit =&gt; &#x27;₀₁₂₃₄₅₆₇₈₉&#x27;[Number(digit)]);
+
+  function node(name, attrs = {}) {
+    const element = document.createElementNS(NS, name);
+    Object.entries(attrs).forEach(([key, value]) =&gt; element.setAttribute(key, value));
+    return element;
+  }
+
+  function textNode(svg, value, x, y, className, anchor = &#x27;start&#x27;) {
+    const label = node(&#x27;text&#x27;, {x, y, class: className, &#x27;text-anchor&#x27;: anchor});
+    label.textContent = value;
+    svg.appendChild(label);
+    return label;
+  }
+
+  function rotateAboutAxis(point, a, theta) {
+    const c = Math.cos(theta), s = Math.sin(theta);
+    return add3(
+      add3(scale3(c, point), scale3(s, cross3(a, point))),
+      scale3((1 - c) * dot3(a, point), a)
+    );
+  }
+
+  function rawVertices(kind) {
+    const signs = [-1, 1];
+    if (kind === &#x27;tetrahedron&#x27;) return [
+      v3(1, 1, 1), v3(1, -1, -1), v3(-1, 1, -1), v3(-1, -1, 1)
+    ];
+    if (kind === &#x27;cube&#x27;) return signs.flatMap(x =&gt; signs.flatMap(y =&gt; signs.map(z =&gt; v3(x, y, z))));
+    if (kind === &#x27;octahedron&#x27;) return [v3(1, 0, 0), v3(-1, 0, 0), v3(0, 1, 0), v3(0, -1, 0), v3(0, 0, 1), v3(0, 0, -1)];
+    if (kind === &#x27;icosahedron&#x27;) {
+      const result = [];
+      signs.forEach(a =&gt; signs.forEach(b =&gt; {
+        result.push(v3(0, a, b * PHI), v3(a, b * PHI, 0), v3(a * PHI, 0, b));
+      }));
+      return result;
+    }
+    const result = signs.flatMap(x =&gt; signs.flatMap(y =&gt; signs.map(z =&gt; v3(x, y, z))));
+    signs.forEach(a =&gt; signs.forEach(b =&gt; {
+      result.push(v3(0, a / PHI, b * PHI), v3(a / PHI, b * PHI, 0), v3(a * PHI, 0, b / PHI));
+    }));
+    return result;
+  }
+
+  function hullFaces(vertices) {
+    const faceMap = new Map();
+    const tolerance = 2e-8;
+    for (let i = 0; i &lt; vertices.length - 2; i++) for (let j = i + 1; j &lt; vertices.length - 1; j++) for (let k = j + 1; k &lt; vertices.length; k++) {
+      let normal = cross3(sub3(vertices[j], vertices[i]), sub3(vertices[k], vertices[i]));
+      if (norm3(normal) &lt;= 1e-10) continue;
+      normal = unit3(normal);
+      let h = dot3(normal, vertices[i]);
+      const differences = vertices.map(vertex =&gt; dot3(normal, vertex) - h);
+      if (Math.max(...differences) &gt; tolerance) {
+        if (Math.min(...differences) &lt; -tolerance) continue;
+        normal = scale3(-1, normal);
+        h = -h;
+      }
+      if (h &lt;= 1e-8) continue;
+      const ids = vertices.map((vertex, index) =&gt; Math.abs(dot3(normal, vertex) - h) &lt;= tolerance ? index : -1).filter(index =&gt; index &gt;= 0);
+      if (ids.length &lt; 3) continue;
+      const key = [...ids].sort((a, b) =&gt; a - b).join(&#x27;,&#x27;);
+      if (faceMap.has(key)) continue;
+      const center = scale3(1 / ids.length, ids.reduce((sum, id) =&gt; add3(sum, vertices[id]), v3(0, 0, 0)));
+      const basisU = unit3(sub3(vertices[ids[0]], center));
+      const basisV = cross3(normal, basisU);
+      let ordered = [...ids].sort((a, b) =&gt; {
+        const da = sub3(vertices[a], center), db = sub3(vertices[b], center);
+        return Math.atan2(dot3(da, basisV), dot3(da, basisU)) - Math.atan2(dot3(db, basisV), dot3(db, basisU));
+      });
+      const orderedNormal = cross3(sub3(vertices[ordered[1]], vertices[ordered[0]]), sub3(vertices[ordered[2]], vertices[ordered[1]]));
+      if (dot3(orderedNormal, normal) &lt; 0) ordered = ordered.reverse();
+      faceMap.set(key, {vertices: ordered, normal, h, center});
+    }
+    const faces = [...faceMap.values()].sort((a, b) =&gt;
+      a.normal.z - b.normal.z || a.normal.y - b.normal.y || a.normal.x - b.normal.x
+    );
+    faces.forEach((face, index) =&gt; { face.index = index; });
+    return faces;
+  }
+
+  function buildSolid(kind) {
+    if (solidCache.has(kind)) return solidCache.get(kind);
+    const raw = rawVertices(kind);
+    const radius = Math.max(...raw.map(norm3));
+    const vertices = raw.map(vertex =&gt; scale3(1 / radius, vertex));
+    const faces = hullFaces(vertices);
+    const edgeMap = new Map();
+    faces.forEach(face =&gt; face.vertices.forEach((vertex, index) =&gt; {
+      const next = face.vertices[(index + 1) % face.vertices.length];
+      const key = vertex &lt; next ? `${vertex},${next}` : `${next},${vertex}`;
+      if (!edgeMap.has(key)) edgeMap.set(key, [vertex, next]);
+    }));
+    const solid = {kind, name: SOLID_NAMES[kind], vertices, faces, edges: [...edgeMap.values()]};
+    solidCache.set(kind, solid);
+    return solid;
+  }
+
+  function crossArray(a, b) {
+    return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  }
+
+  function normalizeCage(facets, rawWeights, outer) {
+    let weights = [...rawWeights];
+    if (weights.every(value =&gt; value &lt; -1e-10)) weights = weights.map(value =&gt; -value);
+    if (!weights.every(value =&gt; value &gt; 1e-10)) return null;
+    const denominator = weights.reduce((sum, weight, index) =&gt; sum + weight * outer.faces[facets[index]].h, 0);
+    weights = weights.map(value =&gt; value / denominator);
+    const balance = facets.reduce((sum, facet, index) =&gt; add3(sum, scale3(weights[index], outer.faces[facet].normal)), v3(0, 0, 0));
+    if (norm3(balance) &gt; 2e-8) return null;
+    return {facets, weights, balanceResidual: norm3(balance)};
+  }
+
+  function enumerateCages(outer) {
+    const result = [];
+    const normals = outer.faces.map(face =&gt; face.normal);
+    for (let i = 0; i &lt; normals.length - 1; i++) for (let j = i + 1; j &lt; normals.length; j++) {
+      if (norm3(cross3(normals[i], normals[j])) &lt;= 1e-9 &amp;&amp; dot3(normals[i], normals[j]) &lt; -1 + 1e-8) {
+        const cage = normalizeCage([i, j], [1, 1], outer);
+        if (cage) result.push(cage);
+      }
+    }
+    for (let i = 0; i &lt; normals.length - 2; i++) for (let j = i + 1; j &lt; normals.length - 1; j++) for (let k = j + 1; k &lt; normals.length; k++) {
+      const columns = [normals[i], normals[j], normals[k]];
+      const rows = [columns.map(n =&gt; n.x), columns.map(n =&gt; n.y), columns.map(n =&gt; n.z)];
+      const candidates = [crossArray(rows[0], rows[1]), crossArray(rows[0], rows[2]), crossArray(rows[1], rows[2])];
+      const raw = candidates.sort((a, b) =&gt; Math.hypot(...b) - Math.hypot(...a))[0];
+      if (Math.hypot(...raw) &lt;= 1e-9) continue;
+      const residual = rows.map(row =&gt; row.reduce((sum, value, q) =&gt; sum + value * raw[q], 0));
+      if (Math.hypot(...residual) &gt; 2e-8) continue;
+      const cage = normalizeCage([i, j, k], raw, outer);
+      if (cage) result.push(cage);
+    }
+    for (let i = 0; i &lt; normals.length - 3; i++) for (let j = i + 1; j &lt; normals.length - 2; j++) for (let k = j + 1; k &lt; normals.length - 1; k++) for (let l = k + 1; l &lt; normals.length; l++) {
+      const raw = [
+        det3(normals[j], normals[k], normals[l]),
+        -det3(normals[i], normals[k], normals[l]),
+        det3(normals[i], normals[j], normals[l]),
+        -det3(normals[i], normals[j], normals[k])
+      ];
+      const cage = normalizeCage([i, j, k, l], raw, outer);
+      if (cage) result.push(cage);
+    }
+    return result.sort((a, b) =&gt; b.facets.length - a.facets.length || a.facets.join(&#x27;,&#x27;).localeCompare(b.facets.join(&#x27;,&#x27;), undefined, {numeric: true}));
+  }
+
+  function coefficientFor(normal, point, rotationAxis) {
+    const constant = dot3(normal, rotationAxis) * dot3(rotationAxis, point);
+    return {
+      A: dot3(normal, point) - constant,
+      B: dot3(normal, cross3(rotationAxis, point)),
+      C: constant
+    };
+  }
+
+  function addCoefficient(a, b) {
+    return {A: a.A + b.A, B: a.B + b.B, C: a.C + b.C};
+  }
+
+  function scaleCoefficient(s, value) {
+    return {A: s * value.A, B: s * value.B, C: s * value.C};
+  }
+
+  function branchValue(g, theta) {
+    return g.C + g.A * Math.cos(theta) + g.B * Math.sin(theta);
+  }
+
+  function evaluate(theta, withTies = false) {
+    const rotatedVertices = innerSolid.vertices.map(vertex =&gt; rotateAboutAxis(vertex, axis, theta));
+    const supports = [];
+    const ties = [];
+    const firstVertices = [];
+    outerSolid.faces.forEach(face =&gt; {
+      const values = rotatedVertices.map(vertex =&gt; dot3(face.normal, vertex));
+      const maximum = Math.max(...values);
+      supports.push(maximum);
+      const winners = values.map((value, index) =&gt; maximum - value &lt;= 2e-9 ? index : -1).filter(index =&gt; index &gt;= 0);
+      firstVertices.push(winners[0]);
+      ties.push(withTies ? winners : [winners[0]]);
+    });
+    const scores = cages.map(cage =&gt; cage.facets.reduce((sum, facet, index) =&gt; sum + cage.weights[index] * supports[facet], 0));
+    const d = Math.max(...scores);
+    return {theta, rotatedVertices, supports, ties, firstVertices, scores, d, mu: 1 / d};
+  }
+
+  function patternForCage(cageIndex, evaluation, vertexIds) {
+    const cage = cages[cageIndex];
+    const contributions = cage.facets.map((facet, index) =&gt; {
+      const vertex = vertexIds[index];
+      const coefficient = scaleCoefficient(cage.weights[index], coefficientFor(outerSolid.faces[facet].normal, innerSolid.vertices[vertex], axis));
+      return {
+        facet,
+        vertex,
+        weight: cage.weights[index],
+        normal: outerSolid.faces[facet].normal,
+        weightedNormal: scale3(cage.weights[index], outerSolid.faces[facet].normal),
+        coefficient
+      };
+    });
+    const g = contributions.reduce((sum, item) =&gt; addCoefficient(sum, item.coefficient), {A: 0, B: 0, C: 0});
+    return {cageIndex, cage, contributions, g, value: branchValue(g, evaluation.theta)};
+  }
+
+  function activePatterns(evaluation) {
+    const tolerance = 2e-8 * Math.max(1, evaluation.d);
+    const activeCages = evaluation.scores.map((score, index) =&gt; evaluation.d - score &lt;= tolerance ? index : -1).filter(index =&gt; index &gt;= 0);
+    const patterns = [];
+    let truncated = false;
+    for (const cageIndex of activeCages) {
+      const cage = cages[cageIndex];
+      const choices = cage.facets.map(facet =&gt; evaluation.ties[facet]);
+      let emitted = 0;
+      const expand = (index, vertices) =&gt; {
+        if (patterns.length &gt;= 4096 || emitted &gt;= 128) { truncated = true; return; }
+        if (index === choices.length) {
+          patterns.push(patternForCage(cageIndex, evaluation, vertices));
+          emitted += 1;
+          return;
+        }
+        choices[index].forEach(vertex =&gt; expand(index + 1, [...vertices, vertex]));
+      };
+      expand(0, []);
+    }
+    return {patterns, truncated, activeCageCount: activeCages.length};
+  }
+
+  function selectTeachingPattern(patterns) {
+    const legibility = pattern =&gt; {
+      const weights = pattern.cage.weights;
+      return Math.min(...weights) / Math.max(...weights);
+    };
+    return [...patterns].sort((a, b) =&gt;
+      b.contributions.length - a.contributions.length
+      || legibility(b) - legibility(a)
+      || a.cage.facets.join(&#x27;,&#x27;).localeCompare(b.cage.facets.join(&#x27;,&#x27;), undefined, {numeric: true})
+      || a.contributions.map(item =&gt; item.vertex).join(&#x27;,&#x27;).localeCompare(b.contributions.map(item =&gt; item.vertex).join(&#x27;,&#x27;), undefined, {numeric: true})
+    )[0] ?? null;
+  }
+
+  function coefficientKey(g) {
+    const clean = value =&gt; Math.abs(value) &lt;= 5e-11 ? 0 : value;
+    return `${clean(g.A).toFixed(8)},${clean(g.B).toFixed(8)},${clean(g.C).toFixed(8)}`;
+  }
+
+  function cageView(active, theta) {
+    const map = new Map();
+    active.patterns.forEach(pattern =&gt; {
+      const key = coefficientKey(pattern.g);
+      if (!map.has(key)) map.set(key, {key, g: pattern.g, patterns: []});
+      map.get(key).patterns.push(pattern);
+    });
+    let groups = [...map.values()].map(group =&gt; ({
+      ...group,
+      representative: selectTeachingPattern(group.patterns),
+      cageCount: new Set(group.patterns.map(pattern =&gt; pattern.cageIndex)).size
+    })).sort((a, b) =&gt; {
+      const derivativeA = -a.g.A * Math.sin(theta) + a.g.B * Math.cos(theta);
+      const derivativeB = -b.g.A * Math.sin(theta) + b.g.B * Math.cos(theta);
+      return derivativeA - derivativeB || a.g.A - b.g.A || a.g.B - b.g.B || a.g.C - b.g.C;
+    });
+    const fullGroupCount = groups.length;
+    const teachingPattern = selectTeachingPattern(active.patterns);
+    const teachingKey = teachingPattern ? coefficientKey(teachingPattern.g) : groups[0]?.key;
+    let sampled = false;
+    if (groups.length &gt; 48) {
+      sampled = true;
+      const selected = new Map();
+      for (let index = 0; index &lt; 48; index++) {
+        const group = groups[Math.round(index * (groups.length - 1) / 47)];
+        selected.set(group.key, group);
+      }
+      const teachingGroup = groups.find(group =&gt; group.key === teachingKey);
+      if (teachingGroup &amp;&amp; !selected.has(teachingGroup.key)) {
+        const firstKey = selected.keys().next().value;
+        selected.delete(firstKey);
+        selected.set(teachingGroup.key, teachingGroup);
+      }
+      groups = [...selected.values()].sort((a, b) =&gt; {
+        const derivativeA = -a.g.A * Math.sin(theta) + a.g.B * Math.cos(theta);
+        const derivativeB = -b.g.A * Math.sin(theta) + b.g.B * Math.cos(theta);
+        return derivativeA - derivativeB || a.g.A - b.g.A || a.g.B - b.g.B || a.g.C - b.g.C;
+      });
+    }
+    groups.forEach((group, index) =&gt; { group.generatorIndex = index; });
+    const items = groups.map(group =&gt; ({
+      itemKey: group.key,
+      cageKey: group.representative.cage.facets.join(&#x27;,&#x27;),
+      group,
+      pattern: group.representative
+    }));
+    const teachingIndex = Math.max(0, items.findIndex(item =&gt; item.itemKey === teachingKey));
+    const orderedItems = [...items.slice(teachingIndex), ...items.slice(0, teachingIndex)];
+    return {groups, items: orderedItems, fullGroupCount, sampled, patternsTruncated: active.truncated, activeCageCount: active.activeCageCount};
+  }
+
+  function solveThreePlanes(a, b, c, values) {
+    const determinant = det3(a, b, c);
+    if (Math.abs(determinant) &lt;= 1e-10) return null;
+    return scale3(1 / determinant, add3(
+      add3(scale3(values[0], cross3(b, c)), scale3(values[1], cross3(c, a))),
+      scale3(values[2], cross3(a, b))
+    ));
+  }
+
+  function fitFromEvaluation(evaluation) {
+    const bounds = outerSolid.faces.map((face, index) =&gt; face.h - evaluation.mu * evaluation.supports[index]);
+    const feasibleVertices = [];
+    const seen = new Set();
+    for (let i = 0; i &lt; outerSolid.faces.length - 2; i++) for (let j = i + 1; j &lt; outerSolid.faces.length - 1; j++) for (let k = j + 1; k &lt; outerSolid.faces.length; k++) {
+      const point = solveThreePlanes(outerSolid.faces[i].normal, outerSolid.faces[j].normal, outerSolid.faces[k].normal, [bounds[i], bounds[j], bounds[k]]);
+      if (!point) continue;
+      const violation = Math.max(...outerSolid.faces.map((face, index) =&gt; dot3(face.normal, point) - bounds[index]));
+      if (violation &gt; 2e-7) continue;
+      const key = `${point.x.toFixed(7)},${point.y.toFixed(7)},${point.z.toFixed(7)}`;
+      if (!seen.has(key)) { seen.add(key); feasibleVertices.push(point); }
+    }
+    let translation = v3(0, 0, 0);
+    if (feasibleVertices.length) translation = scale3(1 / feasibleVertices.length, feasibleVertices.reduce((sum, point) =&gt; add3(sum, point), v3(0, 0, 0)));
+    const polygonVertices = evaluation.rotatedVertices.map(point =&gt; add3(translation, scale3(evaluation.mu, point)));
+    const slacks = outerSolid.faces.map((face, index) =&gt; face.h - dot3(face.normal, translation) - evaluation.mu * evaluation.supports[index]);
+    const tightFaces = slacks.map((slack, index) =&gt; slack &lt;= 2e-6 ? index : -1).filter(index =&gt; index &gt;= 0);
+    const contacts = tightFaces.map(facet =&gt; {
+      const points = evaluation.ties[facet].map(vertex =&gt; polygonVertices[vertex]);
+      return {facet, points, point: scale3(1 / points.length, points.reduce((sum, point) =&gt; add3(sum, point), v3(0, 0, 0)))};
+    });
+    const contactKeys = new Set(contacts.map(contact =&gt; contact.points
+      .map(point =&gt; `${point.x.toFixed(6)},${point.y.toFixed(6)},${point.z.toFixed(6)}`)
+      .sort().join(&#x27;|&#x27;)));
+    return {
+      ...evaluation,
+      bounds,
+      translation,
+      polygonVertices,
+      slacks,
+      tightFaces,
+      contacts,
+      contactLocationCount: contactKeys.size,
+      maxViolation: Math.max(...slacks.map(slack =&gt; -slack))
+    };
+  }
+
+  function winnerPattern(evaluation, cageIndex) {
+    const cage = cages[cageIndex];
+    return patternForCage(cageIndex, evaluation, cage.facets.map(facet =&gt; evaluation.firstVertices[facet]));
+  }
+
+  function vectorRank(vectors) {
+    const basis = [];
+    vectors.forEach(vector =&gt; {
+      let residual = {...vector};
+      basis.forEach(unit =&gt; { residual = sub3(residual, scale3(dot3(residual, unit), unit)); });
+      if (norm3(residual) &gt; 1e-8) basis.push(unit3(residual));
+    });
+    return basis.length;
+  }
+
+  function buildSliceData() {
+    const envelope = [];
+    const branchMap = new Map();
+    for (let degrees = 0; degrees &lt;= 360; degrees += 2) {
+      const evaluation = evaluate(degrees * DEG, false);
+      envelope.push({degrees, d: evaluation.d});
+      evaluation.scores.forEach((score, cageIndex) =&gt; {
+        if (evaluation.d - score &gt; 2e-8 * Math.max(1, evaluation.d)) return;
+        const pattern = winnerPattern(evaluation, cageIndex);
+        const key = coefficientKey(pattern.g);
+        if (!branchMap.has(key)) branchMap.set(key, pattern.g);
+      });
+    }
+    let best = {degrees: 0, d: Infinity};
+    const coarseStep = 0.25;
+    for (let degrees = 0; degrees &lt; 360; degrees += coarseStep) {
+      const d = evaluate(degrees * DEG, false).d;
+      if (d &lt; best.d - 1e-10) best = {degrees, d};
+    }
+    const center = best.degrees;
+    for (let index = -50; index &lt;= 50; index++) {
+      const degrees = mod(center + index * coarseStep / 50, 360);
+      const d = evaluate(degrees * DEG, false).d;
+      if (d &lt; best.d - 1e-12 || Math.abs(d - best.d) &lt;= 1e-12 &amp;&amp; degrees &lt; best.degrees) best = {degrees, d};
+    }
+    return {envelope, branches: [...branchMap.values()], bestAngle: best.degrees, bestD: best.d};
+  }
+
+  function setupSvg(svg, ratio = 1) {
+    const width = Math.max(280, Math.round(svg.getBoundingClientRect().width || 340));
+    const height = Math.round(width / ratio);
+    svg.setAttribute(&#x27;viewBox&#x27;, `0 0 ${width} ${height}`);
+    svg.replaceChildren();
+    svg.appendChild(node(&#x27;rect&#x27;, {x: 16, y: 16, width: width - 32, height: height - 32, class: &#x27;pcg-frame&#x27;}));
+    return {width, height};
+  }
+
+  function cameraViewRotate(point) {
+    return rotateAboutAxis(rotateAboutAxis(point, AXES.z, cameraYaw), AXES.x, cameraPitch);
+  }
+
+  function diagramViewRotate(point) {
+    return rotateAboutAxis(rotateAboutAxis(point, AXES.z, DEFAULT_CAMERA.yaw), AXES.x, DEFAULT_CAMERA.pitch);
+  }
+
+  function drawPhysical(fit, pattern) {
+    const box = setupSvg(physicalSvg);
+    const span = Math.min(box.width, box.height) - 58;
+    const project = point =&gt; {
+      const viewed = cameraViewRotate(point);
+      return {x: box.width / 2 + viewed.x * span * 0.38, y: box.height / 2 - viewed.y * span * 0.38, z: viewed.z};
+    };
+    const selectedFacets = new Set(pattern.contributions.map(item =&gt; item.facet));
+    const tightFacets = new Set(fit.tightFaces);
+    const outerProjected = outerSolid.vertices.map(project);
+    const innerProjected = fit.polygonVertices.map(project);
+    const faceDepth = (face, projected) =&gt; face.vertices.reduce((sum, index) =&gt; sum + projected[index].z, 0) / face.vertices.length;
+    const faceFacing = (face, rotatedNormal = face.normal) =&gt; cameraViewRotate(rotatedNormal).z &gt;= 0;
+    const axisStart = project(scale3(-1.18, axis));
+    const axisEnd = project(scale3(1.18, axis));
+    physicalSvg.appendChild(node(&#x27;line&#x27;, {x1: axisStart.x, y1: axisStart.y, x2: axisEnd.x, y2: axisEnd.y, class: &#x27;pcg-world-axis&#x27;}));
+    const drawOuterFace = face =&gt; {
+      const classes = [&#x27;pcg-outer-face&#x27;];
+      if (!faceFacing(face)) classes.push(&#x27;pcg-back&#x27;);
+      if (tightFacets.has(face.index)) classes.push(&#x27;pcg-tight&#x27;);
+      physicalSvg.appendChild(node(&#x27;polygon&#x27;, {
+        points: face.vertices.map(index =&gt; `${outerProjected[index].x},${outerProjected[index].y}`).join(&#x27; &#x27;),
+        class: classes.join(&#x27; &#x27;)
+      }));
+    };
+    const sortedOuter = [...outerSolid.faces].sort((a, b) =&gt; faceDepth(a, outerProjected) - faceDepth(b, outerProjected));
+    sortedOuter.filter(face =&gt; !faceFacing(face)).forEach(drawOuterFace);
+    const sortedInner = [...innerSolid.faces].map(face =&gt; ({
+      face,
+      normal: rotateAboutAxis(face.normal, axis, fit.theta)
+    })).sort((a, b) =&gt; faceDepth(a.face, innerProjected) - faceDepth(b.face, innerProjected));
+    sortedInner.forEach(({face, normal}) =&gt; {
+      const classes = [&#x27;pcg-inner-face&#x27;];
+      if (!faceFacing(face, normal)) classes.push(&#x27;pcg-back&#x27;);
+      physicalSvg.appendChild(node(&#x27;polygon&#x27;, {
+        points: face.vertices.map(index =&gt; `${innerProjected[index].x},${innerProjected[index].y}`).join(&#x27; &#x27;),
+        class: classes.join(&#x27; &#x27;)
+      }));
+    });
+    sortedOuter.filter(face =&gt; faceFacing(face)).forEach(drawOuterFace);
+    pattern.contributions.forEach(item =&gt; {
+      const face = outerSolid.faces[item.facet];
+      physicalSvg.appendChild(node(&#x27;polygon&#x27;, {
+        points: face.vertices.map(index =&gt; `${outerProjected[index].x},${outerProjected[index].y}`).join(&#x27; &#x27;),
+        class: &#x27;pcg-selected-outline&#x27;
+      }));
+    });
+
+    const defs = node(&#x27;defs&#x27;);
+    const marker = node(&#x27;marker&#x27;, {id: &#x27;pcg-physical-arrow&#x27;, viewBox: &#x27;0 0 6 6&#x27;, refX: 5.2, refY: 3, markerWidth: 5, markerHeight: 5, orient: &#x27;auto&#x27;});
+    marker.appendChild(node(&#x27;path&#x27;, {d: &#x27;M0,0 L6,3 L0,6 Z&#x27;, class: &#x27;pcg-arrowhead&#x27;}));
+    defs.appendChild(marker);
+    physicalSvg.appendChild(defs);
+    fit.contacts.forEach(contact =&gt; {
+      const point = project(contact.point);
+      if (contact.points.length === 2) {
+        const endpoints = contact.points.map(project);
+        physicalSvg.appendChild(node(&#x27;line&#x27;, {x1: endpoints[0].x, y1: endpoints[0].y, x2: endpoints[1].x, y2: endpoints[1].y, class: &#x27;pcg-contact-feature&#x27;}));
+      } else if (contact.points.length &gt; 2) {
+        const center = contact.point;
+        const faceNormal = outerSolid.faces[contact.facet].normal;
+        let basisU = sub3(contact.points[0], center);
+        if (norm3(basisU) &gt; 1e-10) {
+          basisU = unit3(basisU);
+          const basisV = cross3(faceNormal, basisU);
+          const ordered = [...contact.points].sort((a, b) =&gt; {
+            const da = sub3(a, center), db = sub3(b, center);
+            return Math.atan2(dot3(da, basisV), dot3(da, basisU)) - Math.atan2(dot3(db, basisV), dot3(db, basisU));
+          }).map(project);
+          physicalSvg.appendChild(node(&#x27;polygon&#x27;, {points: ordered.map(item =&gt; `${item.x},${item.y}`).join(&#x27; &#x27;), class: &#x27;pcg-contact-feature&#x27;}));
+        }
+      }
+      physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: point.x, cy: point.y, r: 4, class: &#x27;pcg-contact&#x27;}));
+      if (!selectedFacets.has(contact.facet)) return;
+      const normalEnd = project(add3(contact.point, scale3(0.22, outerSolid.faces[contact.facet].normal)));
+      physicalSvg.appendChild(node(&#x27;line&#x27;, {
+        x1: point.x, y1: point.y, x2: normalEnd.x, y2: normalEnd.y,
+        class: &#x27;pcg-normal&#x27;, &#x27;marker-end&#x27;: &#x27;url(#pcg-physical-arrow)&#x27;
+      }));
+      physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: point.x, cy: point.y, r: 7, class: &#x27;pcg-contact-ring&#x27;}));
+      physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: normalEnd.x, cy: normalEnd.y, r: 9, class: &#x27;pcg-face-badge&#x27;}));
+      textNode(physicalSvg, String(contact.facet + 1), normalEnd.x, normalEnd.y, &#x27;pcg-face-number&#x27;, &#x27;middle&#x27;);
+    });
+
+    const outerCenter = project(v3(0, 0, 0));
+    const innerCenter = project(fit.translation);
+    physicalSvg.appendChild(node(&#x27;line&#x27;, {x1: outerCenter.x, y1: outerCenter.y, x2: innerCenter.x, y2: innerCenter.y, class: &#x27;pcg-center-link&#x27;}));
+    if (norm3(fit.translation) &lt;= 2e-6) physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: outerCenter.x, cy: outerCenter.y, r: 10, class: &#x27;pcg-center-halo&#x27;}));
+    physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: outerCenter.x, cy: outerCenter.y, r: 5, class: &#x27;pcg-center-outer&#x27;}));
+    physicalSvg.appendChild(node(&#x27;circle&#x27;, {cx: innerCenter.x, cy: innerCenter.y, r: 3.5, class: &#x27;pcg-center-inner&#x27;}));
+    textNode(physicalSvg, `${axisControl.value}-axis`, Math.max(38, Math.min(box.width - 38, axisEnd.x)), Math.max(30, Math.min(box.height - 24, axisEnd.y - 7)), &#x27;pcg-world-axis-label&#x27;, &#x27;middle&#x27;);
+    return {selectedFacets: [...selectedFacets].sort((a, b) =&gt; a - b)};
+  }
+
+  function chainIntoBox(vectors, left, top, width, height) {
+    const points = [{x: 0, y: 0}];
+    vectors.forEach(vector =&gt; points.push({x: points.at(-1).x + vector.x, y: points.at(-1).y + vector.y}));
+    const xs = points.map(point =&gt; point.x), ys = points.map(point =&gt; point.y);
+    const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+    const rangeX = maxX - minX, rangeY = maxY - minY;
+    const factors = [];
+    if (rangeX &gt; 1e-10) factors.push((width - 34) / rangeX);
+    if (rangeY &gt; 1e-10) factors.push((height - 28) / rangeY);
+    const factor = factors.length ? Math.min(...factors) : 1;
+    const centerX = (minX + maxX) / 2, centerY = (minY + maxY) / 2;
+    return points.map(point =&gt; ({
+      x: left + width / 2 + factor * (point.x - centerX),
+      y: top + height / 2 - factor * (point.y - centerY)
+    }));
+  }
+
+  function drawNumberedChain(svg, chain, contributions, markerId, bounds) {
+    contributions.forEach((item, index) =&gt; {
+      const a = chain[index], b = chain[index + 1];
+      const length = Math.hypot(b.x - a.x, b.y - a.y);
+      if (length &gt; 0.8) svg.appendChild(node(&#x27;line&#x27;, {x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: &#x27;pcg-vector&#x27;, &#x27;marker-end&#x27;: `url(#${markerId})`}));
+      else svg.appendChild(node(&#x27;circle&#x27;, {cx: a.x, cy: a.y, r: 2.5, class: &#x27;pcg-contact&#x27;}));
+    });
+    const placed = [];
+    contributions.forEach((item, index) =&gt; {
+      const a = chain[index], b = chain[index + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const length = Math.hypot(dx, dy);
+      const normal = length &gt; 1 ? {x: -dy / length, y: dx / length} : {x: Math.cos(index * TAU / contributions.length), y: Math.sin(index * TAU / contributions.length)};
+      const midpoint = {x: (a.x + b.x) / 2, y: (a.y + b.y) / 2};
+      const lanes = [14, -14, 29, -29];
+      let badge = null;
+      for (const lane of lanes) {
+        const candidate = {
+          x: Math.max(bounds.left + 10, Math.min(bounds.right - 10, midpoint.x + lane * normal.x)),
+          y: Math.max(bounds.top + 10, Math.min(bounds.bottom - 10, midpoint.y + lane * normal.y))
+        };
+        if (placed.every(other =&gt; Math.hypot(candidate.x - other.x, candidate.y - other.y) &gt;= 20)) { badge = candidate; break; }
+      }
+      badge ??= {x: midpoint.x + 14 * normal.x, y: midpoint.y + 14 * normal.y};
+      placed.push(badge);
+      const distance = Math.hypot(badge.x - midpoint.x, badge.y - midpoint.y);
+      if (distance &gt; 2) {
+        const ratio = Math.max(0, distance - 10) / distance;
+        svg.appendChild(node(&#x27;line&#x27;, {x1: midpoint.x, y1: midpoint.y, x2: midpoint.x + ratio * (badge.x - midpoint.x), y2: midpoint.y + ratio * (badge.y - midpoint.y), class: &#x27;pcg-badge-leader&#x27;}));
+      }
+      svg.appendChild(node(&#x27;circle&#x27;, {cx: badge.x, cy: badge.y, r: 9, class: &#x27;pcg-contribution-badge&#x27;}));
+      textNode(svg, String(item.facet + 1), badge.x, badge.y, &#x27;pcg-contribution-number&#x27;, &#x27;middle&#x27;);
+    });
+  }
+
+  function drawBridge(pattern, generatorNumber) {
+    const width = Math.max(280, Math.round(bridgeSvg.getBoundingClientRect().width || 340));
+    const height = Math.max(570, Math.min(620, Math.round(width * 1.35)));
+    const dividerY = Math.round(height * 0.55);
+    bridgeSvg.setAttribute(&#x27;viewBox&#x27;, `0 0 ${width} ${height}`);
+    bridgeSvg.style.aspectRatio = `${width} / ${height}`;
+    bridgeSvg.replaceChildren();
+    const defs = node(&#x27;defs&#x27;);
+    const vectorMarker = node(&#x27;marker&#x27;, {id: &#x27;pcg-vector-arrow&#x27;, viewBox: &#x27;0 0 6 6&#x27;, refX: 5.2, refY: 3, markerWidth: 5, markerHeight: 5, orient: &#x27;auto&#x27;});
+    vectorMarker.appendChild(node(&#x27;path&#x27;, {d: &#x27;M0,0 L6,3 L0,6 Z&#x27;, class: &#x27;pcg-arrowhead&#x27;}));
+    const resultMarker = node(&#x27;marker&#x27;, {id: &#x27;pcg-result-arrow&#x27;, viewBox: &#x27;0 0 6 6&#x27;, refX: 5.2, refY: 3, markerWidth: 5, markerHeight: 5, orient: &#x27;auto&#x27;});
+    resultMarker.appendChild(node(&#x27;path&#x27;, {d: &#x27;M0,0 L6,3 L0,6 Z&#x27;, class: &#x27;pcg-result-arrowhead&#x27;}));
+    defs.append(vectorMarker, resultMarker);
+    bridgeSvg.appendChild(defs);
+    bridgeSvg.appendChild(node(&#x27;rect&#x27;, {x: 16, y: 16, width: width - 32, height: height - 32, class: &#x27;pcg-frame&#x27;}));
+
+    const projected = pattern.contributions.map(item =&gt; {
+      const viewed = diagramViewRotate(item.weightedNormal);
+      return {...item, projectedNormal: {x: viewed.x, y: viewed.y}};
+    });
+    const contributions = [...projected].sort((a, b) =&gt; Math.atan2(a.projectedNormal.y, a.projectedNormal.x) - Math.atan2(b.projectedNormal.y, b.projectedNormal.x));
+    const generatorLabel = `g${subscriptNumber(generatorNumber)}`;
+    const faceNumbers = contributions.map(item =&gt; item.facet + 1);
+    const normalEquation = faceNumbers.map(number =&gt; `λ${subscriptNumber(number)}n${subscriptNumber(number)}`).join(&#x27; + &#x27;) + &#x27; = 0&#x27;;
+
+    textNode(bridgeSvg, &#x27;STEP 1 · CLOSE THE 3D NORMAL LOOP&#x27;, 28, 36, &#x27;pcg-step-title&#x27;);
+    textNode(bridgeSvg, &#x27;The spatial arrows are projected onto this page.&#x27;, 28, 54, &#x27;pcg-step-note&#x27;);
+    textNode(bridgeSvg, normalEquation, width / 2, 76, &#x27;pcg-step-equation&#x27;, &#x27;middle&#x27;);
+    const topBounds = {left: 34, right: width - 34, top: 90, bottom: dividerY - 78};
+    const topChain = chainIntoBox(contributions.map(item =&gt; item.projectedNormal), topBounds.left, topBounds.top, topBounds.right - topBounds.left, topBounds.bottom - topBounds.top);
+    if (Math.hypot(topChain.at(-1).x - topChain[0].x, topChain.at(-1).y - topChain[0].y) &lt;= 0.7) topChain[topChain.length - 1] = {...topChain[0]};
+    bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: topChain[0].x, cy: topChain[0].y, r: 9, class: &#x27;pcg-closure-halo&#x27;}));
+    drawNumberedChain(bridgeSvg, topChain, contributions, &#x27;pcg-vector-arrow&#x27;, topBounds);
+    textNode(bridgeSvg, &#x27;circled point: start = finish = 0&#x27;, width / 2, dividerY - 57, &#x27;pcg-balance-label&#x27;, &#x27;middle&#x27;);
+    const cageRank = vectorRank(contributions.map(item =&gt; item.normal));
+    const slideDirections = 3 - cageRank;
+    textNode(bridgeSvg, &#x27;No translation improves every chosen bound.&#x27;, width / 2, dividerY - 35, &#x27;pcg-balance-label&#x27;, &#x27;middle&#x27;);
+    textNode(bridgeSvg, slideDirections
+      ? `${slideDirections} tangential slide direction${slideDirections === 1 ? &#x27;&#x27; : &#x27;s&#x27;} remain${slideDirections === 1 ? &#x27;s&#x27; : &#x27;&#x27;}.`
+      : &#x27;The cage spans 3D: no first-order slide remains.&#x27;, width / 2, dividerY - 18, &#x27;pcg-balance-label&#x27;, &#x27;middle&#x27;);
+
+    bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: 28, y1: dividerY, x2: width / 2 - 78, y2: dividerY, class: &#x27;pcg-divider&#x27;}));
+    bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: width / 2 + 78, y1: dividerY, x2: width - 28, y2: dividerY, class: &#x27;pcg-divider&#x27;}));
+    textNode(bridgeSvg, &#x27;↓  keep the same λ’s&#x27;, width / 2, dividerY + 4, &#x27;pcg-same-weights&#x27;, &#x27;middle&#x27;);
+
+    textNode(bridgeSvg, `STEP 2 · BUILD AXIS-SLICE BRANCH ${generatorLabel}`, 28, dividerY + 34, &#x27;pcg-step-title&#x27;);
+    textNode(bridgeSvg, &#x27;Each contact adds coefficients (A, B, C)&#x27;, 28, dividerY + 52, &#x27;pcg-step-note&#x27;);
+    textNode(bridgeSvg, &#x27;from the matrix term λ n pᵀ.&#x27;, 28, dividerY + 68, &#x27;pcg-step-note&#x27;);
+    textNode(bridgeSvg, `f${subscriptNumber(generatorNumber)}(θ) = C + A cos θ + B sin θ`, width / 2, dividerY + 88, &#x27;pcg-step-equation&#x27;, &#x27;middle&#x27;);
+    const bottomTop = dividerY + 106;
+    const bottomBounds = {left: 34, right: width - 34, top: bottomTop, bottom: height - 58};
+    const bottomChain = chainIntoBox(contributions.map(item =&gt; ({x: item.coefficient.A, y: item.coefficient.B})), bottomBounds.left, bottomBounds.top, bottomBounds.right - bottomBounds.left, bottomBounds.bottom - bottomBounds.top);
+    bridgeSvg.appendChild(node(&#x27;line&#x27;, {x1: bottomChain[0].x, y1: bottomChain[0].y, x2: bottomChain.at(-1).x, y2: bottomChain.at(-1).y, class: &#x27;pcg-result&#x27;, &#x27;marker-end&#x27;: &#x27;url(#pcg-result-arrow)&#x27;}));
+    drawNumberedChain(bridgeSvg, bottomChain, contributions, &#x27;pcg-vector-arrow&#x27;, bottomBounds);
+    bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: bottomChain[0].x, cy: bottomChain[0].y, r: 5, class: &#x27;pcg-zero&#x27;}));
+    bridgeSvg.appendChild(node(&#x27;circle&#x27;, {cx: bottomChain.at(-1).x, cy: bottomChain.at(-1).y, r: 6, class: &#x27;pcg-current-point&#x27;}));
+    const g = pattern.g;
+    textNode(bridgeSvg, `${generatorLabel}: A=${g.A.toFixed(4)}, B=${g.B.toFixed(4)}, C=${g.C.toFixed(4)}`, width / 2, height - 25, &#x27;pcg-result-label&#x27;, &#x27;middle&#x27;);
+    return {faceNumbers: [...faceNumbers].sort((a, b) =&gt; a - b), contributionCount: contributions.length, balanceResidual: pattern.cage.balanceResidual, cageRank, slideDirections};
+  }
+
+  function pathData(points, mapX, mapY) {
+    return points.map((point, index) =&gt; `${index ? &#x27;L&#x27; : &#x27;M&#x27;}${mapX(point.degrees).toFixed(2)},${mapY(point.value).toFixed(2)}`).join(&#x27; &#x27;);
+  }
+
+  function drawChart(theta, selectedGroup, generatorNumber, currentD) {
+    const width = Math.max(280, Math.round(chartSvg.getBoundingClientRect().width || 340));
+    const height = Math.max(400, Math.min(470, Math.round(width * 0.98)));
+    chartSvg.setAttribute(&#x27;viewBox&#x27;, `0 0 ${width} ${height}`);
+    chartSvg.style.aspectRatio = `${width} / ${height}`;
+    chartSvg.replaceChildren();
+    const margin = {left: 48, right: 18, top: 24, bottom: 44};
+    const plot = {left: margin.left, right: width - margin.right, top: margin.top, bottom: height - margin.bottom};
+    const envelopeValues = sliceData.envelope.map(point =&gt; point.d);
+    let yMin = Math.min(...envelopeValues), yMax = Math.max(...envelopeValues);
+    const padding = Math.max(0.025 * Math.max(1, yMax), 0.08 * (yMax - yMin || 1));
+    yMin -= padding;
+    yMax += padding;
+    const mapX = degrees =&gt; plot.left + degrees / 360 * (plot.right - plot.left);
+    const mapY = value =&gt; plot.bottom - (value - yMin) / (yMax - yMin) * (plot.bottom - plot.top);
+    chartGeometry = {plot, width, height};
+
+    const defs = node(&#x27;defs&#x27;);
+    const clip = node(&#x27;clipPath&#x27;, {id: &#x27;pcg-chart-clip&#x27;});
+    clip.appendChild(node(&#x27;rect&#x27;, {x: plot.left, y: plot.top, width: plot.right - plot.left, height: plot.bottom - plot.top}));
+    defs.appendChild(clip);
+    chartSvg.appendChild(defs);
+    chartSvg.appendChild(node(&#x27;rect&#x27;, {x: plot.left, y: plot.top, width: plot.right - plot.left, height: plot.bottom - plot.top, class: &#x27;pcg-frame&#x27;}));
+
+    const yTicks = [yMin + 0.15 * (yMax - yMin), (yMin + yMax) / 2, yMax - 0.15 * (yMax - yMin)];
+    yTicks.forEach(value =&gt; {
+      const y = mapY(value);
+      chartSvg.appendChild(node(&#x27;line&#x27;, {x1: plot.left, y1: y, x2: plot.right, y2: y, class: &#x27;pcg-grid&#x27;}));
+      textNode(chartSvg, value.toFixed(3), plot.left - 7, y + 4, &#x27;pcg-tick&#x27;, &#x27;end&#x27;);
+    });
+    [0, 90, 180, 270, 360].forEach(degrees =&gt; {
+      const x = mapX(degrees);
+      chartSvg.appendChild(node(&#x27;line&#x27;, {x1: x, y1: plot.top, x2: x, y2: plot.bottom, class: &#x27;pcg-grid&#x27;}));
+      textNode(chartSvg, `${degrees}°`, x, plot.bottom + 18, &#x27;pcg-tick&#x27;, &#x27;middle&#x27;);
+    });
+    textNode(chartSvg, &#x27;rotation θ&#x27;, (plot.left + plot.right) / 2, height - 9, &#x27;pcg-axis-title&#x27;, &#x27;middle&#x27;);
+    const yTitle = textNode(chartSvg, &#x27;cage score&#x27;, 13, (plot.top + plot.bottom) / 2, &#x27;pcg-axis-title&#x27;, &#x27;middle&#x27;);
+    yTitle.setAttribute(&#x27;transform&#x27;, `rotate(-90 13 ${(plot.top + plot.bottom) / 2})`);
+
+    const selectedKey = coefficientKey(selectedGroup.g);
+    const branchMap = new Map(sliceData.branches.map(g =&gt; [coefficientKey(g), g]));
+    branchMap.set(selectedKey, selectedGroup.g);
+    let branchValues = [...branchMap.values()];
+    if (branchValues.length &gt; 24) {
+      const selected = selectedGroup.g;
+      branchValues = branchValues.filter(g =&gt; coefficientKey(g) !== selectedKey);
+      branchValues = Array.from({length: 23}, (_, index) =&gt; branchValues[Math.round(index * (branchValues.length - 1) / 22)]).filter(Boolean);
+      branchValues.push(selected);
+    }
+    branchValues.forEach(g =&gt; {
+      if (coefficientKey(g) === selectedKey) return;
+      const points = sliceData.envelope.map(point =&gt; ({degrees: point.degrees, value: branchValue(g, point.degrees * DEG)}));
+      chartSvg.appendChild(node(&#x27;path&#x27;, {d: pathData(points, mapX, mapY), class: &#x27;pcg-other-branch&#x27;, &#x27;clip-path&#x27;: &#x27;url(#pcg-chart-clip)&#x27;}));
+    });
+    chartSvg.appendChild(node(&#x27;path&#x27;, {d: pathData(sliceData.envelope.map(point =&gt; ({degrees: point.degrees, value: point.d})), mapX, mapY), class: &#x27;pcg-envelope&#x27;, &#x27;clip-path&#x27;: &#x27;url(#pcg-chart-clip)&#x27;}));
+    const selectedPoints = sliceData.envelope.map(point =&gt; ({degrees: point.degrees, value: branchValue(selectedGroup.g, point.degrees * DEG)}));
+    chartSvg.appendChild(node(&#x27;path&#x27;, {d: pathData(selectedPoints, mapX, mapY), class: &#x27;pcg-selected-branch&#x27;, &#x27;clip-path&#x27;: &#x27;url(#pcg-chart-clip)&#x27;}));
+
+    const currentDegrees = mod(theta / DEG, 360);
+    const currentX = mapX(currentDegrees), currentY = mapY(currentD);
+    const bestX = mapX(sliceData.bestAngle), bestY = mapY(sliceData.bestD);
+    chartSvg.appendChild(node(&#x27;line&#x27;, {x1: bestX, y1: plot.top, x2: bestX, y2: plot.bottom, class: &#x27;pcg-best-guide&#x27;}));
+    chartSvg.appendChild(node(&#x27;circle&#x27;, {cx: bestX, cy: bestY, r: 5, class: &#x27;pcg-best-point&#x27;}));
+    chartSvg.appendChild(node(&#x27;line&#x27;, {x1: currentX, y1: plot.top, x2: currentX, y2: plot.bottom, class: &#x27;pcg-current-guide&#x27;}));
+    chartSvg.appendChild(node(&#x27;circle&#x27;, {cx: currentX, cy: currentY, r: 6, class: &#x27;pcg-current-point&#x27;}));
+
+    const labelRight = currentX &lt; plot.right - 105;
+    textNode(chartSvg, `g${subscriptNumber(generatorNumber)} touches d(θ)`, currentX + (labelRight ? 8 : -8), Math.max(plot.top + 14, currentY - 9), &#x27;pcg-chart-label pcg-purple-label&#x27;, labelRight ? &#x27;start&#x27; : &#x27;end&#x27;);
+    const bestRight = bestX &lt; plot.right - 95;
+    textNode(chartSvg, &#x27;sampled slice best&#x27;, bestX + (bestRight ? 8 : -8), Math.min(plot.bottom - 7, bestY + 17), &#x27;pcg-chart-label pcg-orange-label&#x27;, bestRight ? &#x27;start&#x27; : &#x27;end&#x27;);
+    const envelopeLabelDegrees = 305;
+    const envelopeLabel = sliceData.envelope.reduce((nearest, point) =&gt; Math.abs(point.degrees - envelopeLabelDegrees) &lt; Math.abs(nearest.degrees - envelopeLabelDegrees) ? point : nearest, sliceData.envelope[0]);
+    textNode(chartSvg, &#x27;upper envelope d(θ)&#x27;, mapX(envelopeLabel.degrees) - 5, Math.max(plot.top + 14, mapY(envelopeLabel.d) - 9), &#x27;pcg-chart-label pcg-green-label&#x27;, &#x27;end&#x27;);
+  }
+
+  function configure() {
+    innerSolid = buildSolid(innerControl.value);
+    outerSolid = buildSolid(outerControl.value);
+    axis = AXES[axisControl.value];
+    cages = enumerateCages(outerSolid);
+    selectedItemKey = null;
+    selectedCageKey = null;
+    currentItems = [];
+    sliceData = buildSliceData();
+    angleControl.value = String(sliceData.bestAngle);
+    draw();
+  }
+
+  function draw() {
+    if (!sliceData) return;
+    const theta = Number(angleControl.value) * DEG;
+    const evaluation = evaluate(theta, true);
+    const active = activePatterns(evaluation);
+    const view = cageView(active, theta);
+    let selectedIndex = view.items.findIndex(item =&gt; item.itemKey === selectedItemKey);
+    if (selectedIndex &lt; 0 &amp;&amp; selectedCageKey !== null) selectedIndex = view.items.findIndex(item =&gt; item.cageKey === selectedCageKey);
+    if (selectedIndex &lt; 0) selectedIndex = 0;
+    const selectedItem = view.items[selectedIndex];
+    if (!selectedItem) return;
+    currentItems = view.items;
+    selectedItemKey = selectedItem.itemKey;
+    selectedCageKey = selectedItem.cageKey;
+    const naturalGeneratorNumber = selectedItem.group.generatorIndex + 1;
+    const fit = fitFromEvaluation(evaluation);
+    currentPhysicalFit = fit;
+    currentPhysicalPattern = selectedItem.pattern;
+    const physicalState = drawPhysical(fit, selectedItem.pattern);
+    const bridgeState = drawBridge(selectedItem.pattern, naturalGeneratorNumber);
+    drawChart(theta, selectedItem.group, naturalGeneratorNumber, evaluation.d);
+
+    const degrees = mod(theta / DEG, 360);
+    angleValue.textContent = `${degrees.toFixed(2)}°`;
+    const translationLength = norm3(fit.translation);
+    physicalSummary.textContent = `μ=${fit.mu.toFixed(6)} · |translation|=${translationLength.toFixed(5)} · ${fit.tightFaces.length} tight face${fit.tightFaces.length === 1 ? &#x27;&#x27; : &#x27;s&#x27;} · ${fit.contactLocationCount} contact feature${fit.contactLocationCount === 1 ? &#x27;&#x27; : &#x27;s&#x27;}`;
+    const generatorLabel = `g${subscriptNumber(naturalGeneratorNumber)}`;
+    const selectedFaces = physicalState.selectedFacets.map(facet =&gt; facet + 1).join(&#x27;, &#x27;);
+    examplePosition.textContent = `Example ${selectedIndex + 1} of ${view.items.length} · faces ${selectedFaces} → ${generatorLabel}`;
+    const sharing = selectedItem.group.cageCount &gt; 1 ? ` ${selectedItem.group.cageCount} active cages share this branch.` : &#x27;&#x27;;
+    const sampling = view.sampled || view.patternsTruncated ? ` Showing representative branches (${view.items.length} of ${view.fullGroupCount || view.items.length}).` : &#x27;&#x27;;
+    const rankNote = bridgeState.slideDirections
+      ? ` Their span has rank ${bridgeState.cageRank}, leaving ${bridgeState.slideDirections} neutral slide direction${bridgeState.slideDirections === 1 ? &#x27;&#x27; : &#x27;s&#x27;}.`
+      : &#x27; They span all three translation directions.&#x27;;
+    bridgeSummary.textContent = `${bridgeState.contributionCount} weighted face normals close at zero and build ${generatorLabel}.${rankNote}${sharing}${sampling}`;
+    prevButton.disabled = selectedIndex === 0;
+    nextButton.disabled = selectedIndex === view.items.length - 1;
+    const sliceScale = 1 / sliceData.bestD;
+    const atBest = Math.abs(evaluation.d - sliceData.bestD) &lt;= 2e-6 * Math.max(1, sliceData.bestD);
+    chartSummary.innerHTML = atBest
+      ? `Current ≈ sampled slice best: d=${evaluation.d.toFixed(6)} → μ=${fit.mu.toFixed(6)}&lt;br&gt;θ≈${sliceData.bestAngle.toFixed(3)}° about the ${axisControl.value}-axis.`
+      : `Current: d=${evaluation.d.toFixed(6)} → μ=${fit.mu.toFixed(6)}&lt;br&gt;Sampled slice best: d≈${sliceData.bestD.toFixed(6)} → μ≈${sliceScale.toFixed(6)} at θ≈${sliceData.bestAngle.toFixed(3)}°.`;
+
+    const branchGap = Math.abs(branchValue(selectedItem.group.g, theta) - evaluation.d);
+    root.dataset.balanceResidual = String(bridgeState.balanceResidual);
+    root.dataset.branchGap = String(branchGap);
+    root.dataset.maxViolation = String(Math.max(0, fit.maxViolation));
+    root.dataset.cageSize = String(bridgeState.contributionCount);
+    root.dataset.cageRank = String(bridgeState.cageRank);
+    root.dataset.exampleCount = String(view.items.length);
+    root.dataset.outerFaceCount = String(outerSolid.faces.length);
+    root.dataset.innerVertexCount = String(innerSolid.vertices.length);
+    root.dataset.selectedItemKey = selectedItem.itemKey;
+    root.dataset.scale = String(fit.mu);
+    root.dataset.cameraYaw = String(cameraYaw);
+    root.dataset.cameraPitch = String(cameraPitch);
+    resetViewButton.disabled = Math.abs(cameraYaw - DEFAULT_CAMERA.yaw) &lt;= 1e-10 &amp;&amp; Math.abs(cameraPitch - DEFAULT_CAMERA.pitch) &lt;= 1e-10;
+    physicalSvg.setAttribute(&#x27;aria-label&#x27;, `${innerSolid.name} inside ${outerSolid.name} at ${degrees.toFixed(2)} degrees about the ${axisControl.value}-axis, scale ${fit.mu.toFixed(6)}, with ${fit.tightFaces.length} tight outer faces. Selected cage faces are ${selectedFaces}.`);
+    bridgeSvg.setAttribute(&#x27;aria-label&#x27;, `Selected balanced cage with ${bridgeState.contributionCount} weighted outer-face normals closing at zero. The same contacts build axis-slice branch g${naturalGeneratorNumber}.`);
+    chartSvg.setAttribute(&#x27;aria-label&#x27;, `Certificate score curves for rotations about the ${axisControl.value}-axis. The upper envelope at the current angle is ${evaluation.d.toFixed(6)}, giving scale ${fit.mu.toFixed(6)}. The sampled slice-best angle is ${sliceData.bestAngle.toFixed(3)} degrees.`);
+  }
+
+  function selectAdjacent(delta) {
+    const currentIndex = currentItems.findIndex(item =&gt; item.itemKey === selectedItemKey);
+    if (currentIndex &lt; 0) return;
+    const nextIndex = Math.max(0, Math.min(currentItems.length - 1, currentIndex + delta));
+    if (nextIndex === currentIndex) return;
+    const item = currentItems[nextIndex];
+    selectedItemKey = item.itemKey;
+    selectedCageKey = item.cageKey;
+    draw();
+  }
+
+  function redrawPhysicalView() {
+    physicalRedrawFrame = null;
+    if (!currentPhysicalFit || !currentPhysicalPattern) return;
+    drawPhysical(currentPhysicalFit, currentPhysicalPattern);
+    root.dataset.cameraYaw = String(cameraYaw);
+    root.dataset.cameraPitch = String(cameraPitch);
+    resetViewButton.disabled = Math.abs(cameraYaw - DEFAULT_CAMERA.yaw) &lt;= 1e-10 &amp;&amp; Math.abs(cameraPitch - DEFAULT_CAMERA.pitch) &lt;= 1e-10;
+  }
+
+  function schedulePhysicalRedraw() {
+    if (physicalRedrawFrame !== null) return;
+    physicalRedrawFrame = requestAnimationFrame(redrawPhysicalView);
+  }
+
+  function finishOrbit(event) {
+    if (event.pointerId !== orbitPointerId) return;
+    try {
+      if (physicalSvg.hasPointerCapture?.(orbitPointerId)) physicalSvg.releasePointerCapture(orbitPointerId);
+    } catch {}
+    orbitPointerId = null;
+    orbitLastPoint = null;
+    physicalSvg.classList.remove(&#x27;pcg-is-dragging&#x27;);
+  }
+
+  innerControl.addEventListener(&#x27;change&#x27;, configure);
+  outerControl.addEventListener(&#x27;change&#x27;, configure);
+  axisControl.addEventListener(&#x27;change&#x27;, configure);
+  angleControl.addEventListener(&#x27;input&#x27;, draw);
+  bestButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+    angleControl.value = String(sliceData.bestAngle);
+    draw();
+  });
+  prevButton.addEventListener(&#x27;click&#x27;, () =&gt; selectAdjacent(-1));
+  nextButton.addEventListener(&#x27;click&#x27;, () =&gt; selectAdjacent(1));
+  chartSvg.addEventListener(&#x27;click&#x27;, event =&gt; {
+    if (!chartGeometry) return;
+    const rect = chartSvg.getBoundingClientRect();
+    const viewX = (event.clientX - rect.left) * chartGeometry.width / rect.width;
+    const fraction = (viewX - chartGeometry.plot.left) / (chartGeometry.plot.right - chartGeometry.plot.left);
+    if (fraction &lt; 0 || fraction &gt; 1) return;
+    angleControl.value = String(360 * fraction);
+    draw();
+  });
+  physicalSvg.addEventListener(&#x27;pointerdown&#x27;, event =&gt; {
+    if (orbitPointerId !== null) return;
+    if (!event.isPrimary) return;
+    if (event.pointerType === &#x27;mouse&#x27; &amp;&amp; event.button !== 0) return;
+    orbitPointerId = event.pointerId;
+    orbitLastPoint = {x: event.clientX, y: event.clientY};
+    const rect = physicalSvg.getBoundingClientRect();
+    orbitRadiansPerPixel = Math.PI / Math.max(240, Math.min(rect.width, rect.height));
+    try { physicalSvg.setPointerCapture?.(event.pointerId); } catch {}
+    physicalSvg.classList.add(&#x27;pcg-is-dragging&#x27;);
+    event.preventDefault();
+  });
+  physicalSvg.addEventListener(&#x27;pointermove&#x27;, event =&gt; {
+    if (event.pointerId !== orbitPointerId || !orbitLastPoint) return;
+    if (event.pointerType === &#x27;mouse&#x27; &amp;&amp; (event.buttons &amp; 1) === 0) {
+      finishOrbit(event);
+      return;
+    }
+    const dx = event.clientX - orbitLastPoint.x;
+    const dy = event.clientY - orbitLastPoint.y;
+    orbitLastPoint = {x: event.clientX, y: event.clientY};
+    if (dx || dy) {
+      cameraYaw = mod(cameraYaw + dx * orbitRadiansPerPixel + Math.PI, TAU) - Math.PI;
+      cameraPitch = Math.max(-1.49, Math.min(1.49, cameraPitch + dy * orbitRadiansPerPixel));
+      schedulePhysicalRedraw();
+    }
+    event.preventDefault();
+  });
+  physicalSvg.addEventListener(&#x27;pointerup&#x27;, finishOrbit);
+  physicalSvg.addEventListener(&#x27;pointercancel&#x27;, finishOrbit);
+  physicalSvg.addEventListener(&#x27;lostpointercapture&#x27;, event =&gt; {
+    if (event.pointerId !== orbitPointerId) return;
+    orbitPointerId = null;
+    orbitLastPoint = null;
+    physicalSvg.classList.remove(&#x27;pcg-is-dragging&#x27;);
+  });
+  resetViewButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+    cameraYaw = DEFAULT_CAMERA.yaw;
+    cameraPitch = DEFAULT_CAMERA.pitch;
+    schedulePhysicalRedraw();
+  });
+  new ResizeObserver(draw).observe(physicalSvg);
+  new ResizeObserver(draw).observe(bridgeSvg);
+  new ResizeObserver(draw).observe(chartSvg);
+  configure();
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+  let lastPointerWasTouch = false;
+  let pinnedByTouch = false;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    pinnedByTouch = false;
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handlePointer = (event) =&gt; {
+    lastPointerWasTouch =
+      event.type === &quot;pointerdown&quot; &amp;&amp; event.pointerType === &quot;touch&quot;;
+  };
+  const handleTouchClick = (event) =&gt; {
+    const isTouch = event.pointerType === &quot;touch&quot; || lastPointerWasTouch;
+    lastPointerWasTouch = false;
+    if (!isTouch || event.detail === 0) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (
+      trigger == null ||
+      !trigger.isConnected ||
+      getContent(trigger).length === 0 ||
+      (pinnedByTouch &amp;&amp; activeTrigger === trigger)
+    ) {
+      if (pinnedByTouch) {
+        closeTooltip();
+      }
+      return;
+    }
+    openTooltip(trigger);
+    pinnedByTouch = activeTrigger === trigger;
+    window.setTimeout(() =&gt; {
+      if (activeTrigger === trigger &amp;&amp; !trigger.isConnected) {
+        closeTooltip(false);
+      }
+    }, 0);
+  };
+  const handleLeave = (event) =&gt; {
+    if (pinnedByTouch) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    lastPointerWasTouch = false;
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    lastPointerWasTouch = false;
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerdown&quot;, handlePointer);
+    document.removeEventListener(&quot;pointercancel&quot;, handlePointer);
+    document.removeEventListener(&quot;click&quot;, handleTouchClick);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerdown&quot;, handlePointer);
+  document.addEventListener(&quot;pointercancel&quot;, handlePointer);
+  document.addEventListener(&quot;click&quot;, handleTouchClick);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-tabs&quot;&gt;
+(() =&gt; {
+  const selector = &#x27;.nav[role=&quot;tablist&quot;] [role=&quot;tab&quot;]&#x27;;
+  const disabled = &#x27;:disabled,[aria-disabled=&quot;true&quot;]&#x27;;
+  const selectTab = (selected) =&gt; {
+    const panelId = selected.getAttribute(&quot;aria-controls&quot;);
+    for (const tab of selected.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;)) {
+      const active = tab === selected;
+      tab.classList.toggle(&quot;active&quot;, active);
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+      const id = tab.getAttribute(&quot;aria-controls&quot;);
+      const panel = id &amp;&amp; document.getElementById(id);
+      if (panel != null) {
+        panel.hidden = id !== panelId;
+        if (!panel.hidden &amp;&amp; selected.id) {
+          panel.setAttribute(&quot;aria-labelledby&quot;, selected.id);
+        }
+      }
+    }
+  };
+  const interact = (event) =&gt; {
+    const tab = event.target?.closest?.(selector);
+    if (event.defaultPrevented || tab == null || tab.matches(disabled)) {
+      return;
+    }
+    if (event.type === &quot;click&quot;) {
+      selectTab(tab);
+      return;
+    }
+    const tabs = Array.from(
+      tab.closest(&#x27;[role=&quot;tablist&quot;]&#x27;).querySelectorAll(&#x27;[role=&quot;tab&quot;]&#x27;),
+    ).filter((candidate) =&gt; !candidate.matches(disabled));
+    const current = tabs.indexOf(tab);
+    let next;
+    if (event.key === &quot;ArrowRight&quot; || event.key === &quot;ArrowDown&quot;) {
+      next = (current + 1) % tabs.length;
+    } else if (event.key === &quot;ArrowLeft&quot; || event.key === &quot;ArrowUp&quot;) {
+      next = (current + tabs.length - 1) % tabs.length;
+    } else if (event.key === &quot;Home&quot;) {
+      next = 0;
+    } else if (event.key === &quot;End&quot;) {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    tabs[next].focus();
+    selectTab(tabs[next]);
+  };
+
+  for (const list of document.querySelectorAll(&#x27;.nav[role=&quot;tablist&quot;]&#x27;)) {
+    const selected =
+      list.querySelector(&#x27;[role=&quot;tab&quot;][aria-selected=&quot;true&quot;]&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;].active&#x27;) ??
+      list.querySelector(&#x27;[role=&quot;tab&quot;]&#x27;);
+    if (selected != null) {
+      selectTab(selected);
+    }
+  }
+  document.addEventListener(&quot;click&quot;, interact);
+  document.addEventListener(&quot;keydown&quot;, interact);
+  window.addEventListener(&quot;pagehide&quot;, () =&gt; {
+    document.removeEventListener(&quot;click&quot;, interact);
+    document.removeEventListener(&quot;keydown&quot;, interact);
+  }, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</main>
+</body>
+</html>

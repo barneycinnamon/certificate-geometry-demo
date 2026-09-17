@@ -1,12 +1,12 @@
-# Certificate Geometry Intuition
+# Containment Geometry Lab
 
-An interactive numerical illustration of the planar certificate-polygon mechanism for optimal similarity containment of regular polygons.
+A small GitHub Pages collection of interactive numerical explanations for similarity containment.
 
-The visualization links three views:
+## Demonstrations
 
-1. the physical contact cage;
-2. balanced-normal cancellation and certificate-generator construction;
-3. the certificate polygon, its supporting line, and reciprocal containment scale.
+- **Regular polygons · 2D** (`/`): physical contact cages, balanced-normal cancellation, and the certificate polygon.
+- **Platonic solids · 3D** (`/platonic/`): physical contact features, three-dimensional balanced cages, and a fixed-axis slice through matrix-certificate geometry.
+- **About** (`/about/`): mathematical scope and interpretation.
 
-This is an explanatory visualization, not a formal proof artifact or authority record from the Coxeter Containment program.
+These are explanatory visualizations, not formal proof artifacts or authority records from the Coxeter Containment program. The Platonic-solid “best” is numerical and restricted to the selected one-axis slice; it is not a certified global optimum over all of `SO(3)`.
 
